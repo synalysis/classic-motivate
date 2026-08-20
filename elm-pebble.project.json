@@ -84,7 +84,7 @@
     "visibility": "public"
   },
   "import_path": ".",
-  "latest_published_version": "1.0.0",
+  "latest_published_version": "1.0.1",
   "name": "Classic Motivate",
   "package_metadata_cache": {},
   "release_defaults": {
@@ -103,7 +103,7 @@
       "flint",
       "gabbro"
     ],
-    "version_label": "1.0.1"
+    "version_label": "1.0.2"
   },
   "schema_version": 1,
   "slug": "classic-motivate",
@@ -112,6 +112,6 @@
     "protocol",
     "phone"
   ],
-  "store_app_id": null,
+  "store_app_id": "affc96ec1b9a4016a9ec54f6",
   "target_type": "watchface"
 }
