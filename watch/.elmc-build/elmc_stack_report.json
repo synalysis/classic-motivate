@@ -3,1181 +3,1181 @@
     {
       "function": "Basics.gt",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Basics.lt",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Basics.max",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Basics.min",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Basics.modBy",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Basics.not",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Bitwise.or",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Bitwise.shiftLeftBy",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Companion.Internal.watchToPhoneTag",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Companion.Internal.watchToPhoneValue",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Companion.Watch.onPhoneToWatch",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Companion.Watch.sendWatchToPhone",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Elm.Kernel.PebbleWatch.batch",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Elm.Kernel.PebbleWatch.companionSend",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Elm.Kernel.PebbleWatch.getColor",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Elm.Kernel.PebbleWatch.getCurrentDateTime",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Elm.Kernel.PebbleWatch.onHourChange",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Elm.Kernel.PebbleWatch.onMinuteChange",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Elm.Kernel.PebbleWatch.onSecondChange",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Elm.Kernel.PebbleWatch.storageReadInt",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Elm.Kernel.PebbleWatch.storageReadString",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Elm.Kernel.PebbleWatch.storageWriteInt",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Elm.Kernel.PebbleWatch.storageWriteString",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Json.Decode.bool",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Json.Decode.decodeValue",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Json.Decode.field",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Json.Decode.int",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Json.Decode.map",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Json.Decode.map2",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Json.Decode.map4",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Json.Decode.map7",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Json.Decode.null",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Json.Decode.oneOf",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Json.Decode.string",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Json.Decode.succeed",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "List.cons",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "List.filter",
       "level": "warn",
-      "score": 6,
       "reasons": [
         "lambda"
-      ]
+      ],
+      "score": 6
     },
     {
       "function": "List.foldl",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "List.foldr",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "List.foldrHelper",
       "level": "risk",
-      "score": 21,
-      "reasons": []
+      "reasons": [],
+      "score": 21
     },
     {
       "function": "List.indexedMap",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "List.length",
       "level": "warn",
-      "score": 6,
       "reasons": [
         "lambda"
-      ]
+      ],
+      "score": 6
     },
     {
       "function": "List.map",
       "level": "warn",
-      "score": 6,
       "reasons": [
         "lambda"
-      ]
+      ],
+      "score": 6
     },
     {
       "function": "List.map2",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "List.range",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "List.rangeHelp",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "List.reverse",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Main.accQuoteWord",
       "level": "ok",
-      "score": 2,
-      "reasons": []
+      "reasons": [],
+      "score": 2
     },
     {
       "function": "Main.applyQuoteSeconds",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Main.applyQuoteText",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Main.applyWatchSeconds",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Main.buildHands",
       "level": "warn",
-      "score": 9,
-      "reasons": []
+      "reasons": [],
+      "score": 9
     },
     {
       "function": "Main.buildLayout",
       "level": "risk",
-      "score": 23,
       "reasons": [
         "list_hof"
-      ]
+      ],
+      "score": 23
     },
     {
       "function": "Main.clampSeconds",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Main.dateOps",
       "level": "ok",
-      "score": 3,
-      "reasons": []
+      "reasons": [],
+      "score": 3
     },
     {
       "function": "Main.defaultQuote",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Main.defaultQuoteSeconds",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Main.defaultWatchSeconds",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Main.faceOps",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Main.handOps",
       "level": "warn",
-      "score": 7,
-      "reasons": []
+      "reasons": [],
+      "score": 7
     },
     {
       "function": "Main.handPoint",
       "level": "ok",
-      "score": 4,
-      "reasons": []
+      "reasons": [],
+      "score": 4
     },
     {
       "function": "Main.hourTick",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Main.hourTickIndexes",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Main.hourTickOp",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Main.init",
       "level": "ok",
-      "score": 1,
-      "reasons": []
+      "reasons": [],
+      "score": 1
     },
     {
       "function": "Main.isCardinal",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Main.main",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Main.minuteTick",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Main.minuteTickIndexes",
       "level": "warn",
-      "score": 7,
       "reasons": [
         "lambda",
         "list_hof"
-      ]
+      ],
+      "score": 7
     },
     {
       "function": "Main.minuteTickOp",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Main.normalizeQuote",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Main.phaseSeconds",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Main.quoteBounds",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Main.quoteFont",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Main.quoteLineOp",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Main.quoteOps",
       "level": "ok",
-      "score": 4,
       "reasons": [
         "list_hof"
-      ]
+      ],
+      "score": 4
     },
     {
       "function": "Main.refreshAfterTick",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Main.refreshDraw",
       "level": "ok",
-      "score": 1,
-      "reasons": []
+      "reasons": [],
+      "score": 1
     },
     {
       "function": "Main.refreshQuoteLayout",
       "level": "risk",
-      "score": 11,
       "reasons": [
         "lambda"
-      ]
+      ],
+      "score": 11
     },
     {
       "function": "Main.refreshRemaining",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Main.setMinute",
       "level": "ok",
-      "score": 3,
       "reasons": [
         "lambda"
-      ]
+      ],
+      "score": 3
     },
     {
       "function": "Main.setSecond",
       "level": "ok",
-      "score": 3,
       "reasons": [
         "lambda"
-      ]
+      ],
+      "score": 3
     },
     {
       "function": "Main.storeQuoteSeconds",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Main.storeQuoteText",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Main.storeWatchSeconds",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Main.strokeLine",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Main.subscriptions",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Main.tickPhase",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Main.unit60",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Main.update",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Main.updateField",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Main.updateFromPhone",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Main.view",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Main.watchOps",
       "level": "risk",
-      "score": 12,
       "reasons": [
         "list_hof"
-      ]
+      ],
+      "score": 12
     },
     {
       "function": "Main.wrapQuoteWords",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Events.batch",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Events.onHourChange",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Events.onMinuteChange",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Events.onSecondChange",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Internal.Companion.companionSend",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Platform.application",
       "level": "ok",
-      "score": 3,
       "reasons": [
         "lambda"
-      ]
+      ],
+      "score": 3
     },
     {
       "function": "Pebble.Platform.colorCapabilityDecoder",
       "level": "ok",
-      "score": 3,
       "reasons": [
         "lambda"
-      ]
+      ],
+      "score": 3
     },
     {
       "function": "Pebble.Platform.colorCapabilityFromString",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Platform.colorCapabilityIsColor",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Platform.contextObjectDecoder",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Platform.coreContextDecoder",
       "level": "risk",
-      "score": 21,
       "reasons": [
         "lambda"
-      ]
+      ],
+      "score": 21
     },
     {
       "function": "Pebble.Platform.decodeFieldWithDefault",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Platform.decodeLaunchContext",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Platform.defaultContext",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Platform.defaultScreen",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Platform.displayShapeDecoder",
       "level": "ok",
-      "score": 3,
       "reasons": [
         "lambda"
-      ]
+      ],
+      "score": 3
     },
     {
       "function": "Pebble.Platform.displayShapeFromString",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Platform.displayShapeIsRound",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Platform.launchButtonDecoder",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Platform.launchButtonFromString",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Platform.launchButtonFromTag",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Platform.launchContextDecoder",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Platform.launchMetadataDecoder",
       "level": "warn",
-      "score": 6,
       "reasons": [
         "lambda"
-      ]
+      ],
+      "score": 6
     },
     {
       "function": "Pebble.Platform.launchReasonDecoder",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Platform.launchReasonFromString",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Platform.mergeLaunchMetadata",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Platform.quickLaunchActionDecoder",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Platform.quickLaunchActionFromString",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Platform.quickLaunchActionFromTag",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Platform.screenDecoder",
       "level": "risk",
-      "score": 18,
       "reasons": [
         "lambda"
-      ]
+      ],
+      "score": 18
     },
     {
       "function": "Pebble.Platform.watchface",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Storage.readInt",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Storage.readString",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Storage.writeInt",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Storage.writeString",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Time.currentDateTime",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.Color.black",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.Color.blue",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.Color.brass",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.Color.brilliantRose",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.Color.cadetBlue",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.Color.channelTo2Bit",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.Color.clampInt",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.Color.darkCandyAppleRed",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.Color.folly",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.Color.green",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.Color.indexed",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.Color.lightGray",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.Color.orange",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.Color.pastelYellow",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.Color.rajah",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.Color.red",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.Color.springBud",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.Color.sunsetOrange",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.Color.tiffanyBlue",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.Color.toInt",
       "level": "warn",
-      "score": 7,
-      "reasons": []
+      "reasons": [],
+      "score": 7
     },
     {
       "function": "Pebble.Ui.Color.white",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.Resources.fontInfo",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.alignCenter",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.canvasLayer",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.circle",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.clear",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.context",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.defaultTextOptions",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.fillCircle",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.group",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.line",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.pixel",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.rect",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.strokeColor",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.strokeWidth",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.text",
       "level": "ok",
-      "score": 2,
-      "reasons": []
+      "reasons": [],
+      "score": 2
     },
     {
       "function": "Pebble.Ui.textAlignmentToInt",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.textColor",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.textOverflowToInt",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.toUiNode",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.window",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Ui.windowStack",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.WatchInfo.caseColor",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.WatchInfo.getColor",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Platform.worker",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "String.fromInt",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "String.length",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "String.trim",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "String.words",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Tuple.first",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Tuple.second",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "elmc_fn_Main_clampSeconds",
       "level": "ok",
-      "score": 0,
       "reasons": [],
+      "score": 0,
       "c_boxed_locals": 0,
       "c_tmp_max": 0
     },
     {
       "function": "elmc_fn_Main_defaultQuoteSeconds",
       "level": "ok",
-      "score": 0,
       "reasons": [],
+      "score": 0,
       "c_boxed_locals": 0,
       "c_tmp_max": 0
     },
     {
       "function": "elmc_fn_Main_defaultWatchSeconds",
       "level": "ok",
-      "score": 0,
       "reasons": [],
+      "score": 0,
       "c_boxed_locals": 0,
       "c_tmp_max": 0
     },
     {
       "function": "elmc_fn_Main_refreshRemaining",
       "level": "ok",
-      "score": 0,
       "reasons": [],
+      "score": 0,
       "c_boxed_locals": 2,
       "c_tmp_max": 0
     },
     {
       "function": "elmc_fn_Main_storeQuoteSeconds",
       "level": "ok",
-      "score": 0,
       "reasons": [],
+      "score": 0,
       "c_boxed_locals": 0,
       "c_tmp_max": 0
     },
     {
       "function": "elmc_fn_Main_storeQuoteText",
       "level": "ok",
-      "score": 0,
       "reasons": [],
+      "score": 0,
       "c_boxed_locals": 0,
       "c_tmp_max": 0
     },
     {
       "function": "elmc_fn_Main_storeWatchSeconds",
       "level": "ok",
-      "score": 0,
       "reasons": [],
+      "score": 0,
       "c_boxed_locals": 0,
       "c_tmp_max": 0
     }
@@ -1193,7 +1193,7 @@
     "commands_append_bytes": 9667,
     "direct_command_defs": 18,
     "fusion_native_count": 4,
-    "generated_c_bytes": 128617,
+    "generated_c_bytes": 128721,
     "generated_c_lines": 3120,
     "generic_function_defs": 13,
     "linked_binary": {

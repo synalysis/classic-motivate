@@ -84,14 +84,16 @@
     "visibility": "public"
   },
   "import_path": ".",
-  "latest_published_version": null,
+  "latest_published_version": "1.0.0",
   "name": "Classic Motivate",
   "package_metadata_cache": {},
   "release_defaults": {
     "capabilities": [
       "configurable"
     ],
+    "changelog": "",
     "description": "Analog watchface with a companion-configurable motivational quote that alternates with the clock.",
+    "release_channel": "stable",
     "tags": "analog, motivation, configurable",
     "target_platforms": [
       "basalt",
@@ -101,7 +103,7 @@
       "flint",
       "gabbro"
     ],
-    "version_label": "1.0.0"
+    "version_label": "1.0.1"
   },
   "schema_version": 1,
   "slug": "classic-motivate",

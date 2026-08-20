@@ -6,7 +6,7 @@
       "min_large_rc_fns": 10
     },
     "eligible": false,
-    "generated_text_bytes": 128617,
+    "generated_text_bytes": 128721,
     "generated_text_share": 0.0,
     "large_rc_fn_count": 39,
     "pebble_app_bin_bytes": 0
@@ -18,8 +18,8 @@
   "constraint": "heap_bound",
   "contract": "elmc.flash_vs_heap.v1",
   "flash": {
-    "elmc_app_text": 11846,
-    "generated_text_bytes": 128617,
+    "elmc_app_text": 0,
+    "generated_text_bytes": 128721,
     "generated_text_share": 0.0,
     "large_rc_fn_count": 39,
     "linked_text": null,
