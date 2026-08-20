@@ -26,12 +26,12 @@ Edit bitmap, vector, and font assets there instead of editing this read-only fil
 -}
 
 type StaticBitmap
-    = BitmapStaticBtIcon
+    = NoStaticBitmap
 
 
 allStaticBitmaps : List StaticBitmap
 allStaticBitmaps =
-    [ BitmapStaticBtIcon ]
+    [ NoStaticBitmap ]
 
 
 type alias StaticBitmapInfo =
@@ -44,9 +44,8 @@ type alias StaticBitmapInfo =
 staticBitmapInfo : StaticBitmap -> StaticBitmapInfo
 staticBitmapInfo staticBitmap =
     case staticBitmap of
-        BitmapStaticBtIcon ->
-            { staticBitmap = BitmapStaticBtIcon, name = "BitmapStaticBtIcon", width = 0, height = 0 }
-
+        NoStaticBitmap ->
+            { staticBitmap = NoStaticBitmap, name = "NoStaticBitmap", width = 0, height = 0 }
 
 
 type AnimatedBitmap
