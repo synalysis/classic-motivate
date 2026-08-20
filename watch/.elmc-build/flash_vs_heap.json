@@ -6,9 +6,9 @@
       "min_large_rc_fns": 10
     },
     "eligible": false,
-    "generated_text_bytes": 128721,
+    "generated_text_bytes": 25438,
     "generated_text_share": 0.0,
-    "large_rc_fn_count": 39,
+    "large_rc_fn_count": 44,
     "pebble_app_bin_bytes": 0
   },
   "bytecode_vm": {
@@ -18,10 +18,10 @@
   "constraint": "heap_bound",
   "contract": "elmc.flash_vs_heap.v1",
   "flash": {
-    "elmc_app_text": 0,
-    "generated_text_bytes": 128721,
+    "elmc_app_text": 37346,
+    "generated_text_bytes": 25438,
     "generated_text_share": 0.0,
-    "large_rc_fn_count": 39,
+    "large_rc_fn_count": 44,
     "linked_text": null,
     "pebble_app_bin_bytes": 0,
     "runtime_text": null
@@ -31,7 +31,7 @@
     "closure_allocations": 0,
     "elf_bss": null,
     "elf_data": null,
-    "owned_slot_max": 35,
+    "owned_slot_max": 53,
     "worker_last_dispatch_cmd_cap": 0
   },
   "recommendation": "Prefer shallower owned frames, unboxed locals, BSS caps, and size-profile codegen—not bytecode."

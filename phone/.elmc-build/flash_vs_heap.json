@@ -18,7 +18,7 @@
   "constraint": "balanced",
   "contract": "elmc.flash_vs_heap.v1",
   "flash": {
-    "elmc_app_text": 10400,
+    "elmc_app_text": 10328,
     "generated_text_bytes": 4,
     "generated_text_share": 0.0,
     "large_rc_fn_count": 0,

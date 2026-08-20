@@ -3,140 +3,140 @@
     {
       "function": "Engine.incoming",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Engine.outgoing",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Companion.Geolocation.geolocationIncoming",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Companion.Geolocation.geolocationOutgoing",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Companion.Phone.batteryPlatformIncoming",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Companion.Phone.calendarNextPlatformIncoming",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Companion.Phone.calendarPlatformIncoming",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Companion.Phone.calendarUpcomingPlatformIncoming",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Companion.Phone.configurationPlatformIncoming",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Companion.Phone.connectivityPlatformIncoming",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Companion.Phone.environmentPlatformIncoming",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Companion.Phone.incoming",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Companion.Phone.lifecyclePlatformIncoming",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Companion.Phone.localePlatformIncoming",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Companion.Phone.notificationsPlatformIncoming",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Companion.Phone.outgoing",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Companion.Phone.preferencesPlatformIncoming",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Companion.Phone.storagePlatformIncoming",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Companion.Phone.timelineCommandsPlatformIncoming",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Companion.Phone.timelineTokenPlatformIncoming",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Companion.Phone.weatherCurrentPlatformIncoming",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Companion.Phone.weatherForecastPlatformIncoming",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     },
     {
       "function": "Pebble.Companion.Phone.weatherPlatformIncoming",
       "level": "ok",
-      "score": 0,
-      "reasons": []
+      "reasons": [],
+      "score": 0
     }
   ],
   "summary": {

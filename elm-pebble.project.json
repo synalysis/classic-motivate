@@ -10,6 +10,10 @@
         "trigger": "on_minute_change"
       }
     ],
+    "configuration_values": {
+      "watchBackground": "white",
+      "watchForeground": "black"
+    },
     "emulator_mode": "embedded",
     "emulator_production_build": true,
     "emulator_target": "basalt",
@@ -29,7 +33,7 @@
       "storage_values": {},
       "compass_heading_deg": 0,
       "dictation_transcript": "",
-      "clock_24h": true,
+      "clock_24h": false,
       "network_online": true,
       "preferences": {},
       "dictation_error": "",

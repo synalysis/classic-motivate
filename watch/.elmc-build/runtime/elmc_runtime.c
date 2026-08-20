@@ -546,10 +546,6 @@ static RC elmc_int_list_reverse_into(ElmcValue **out, ElmcValue *list) {
   return rc;
 }
 
-static int elmc_value_is_boxed_int(ElmcValue *value) {
-  return value && (value->tag == ELMC_TAG_INT || value->tag == ELMC_TAG_BOOL || value->tag == ELMC_TAG_CHAR);
-}
-
 RC elmc_int_list_to_cons(ElmcValue **out, ElmcValue *list) {
   ElmcIntListPayload *payload = elmc_int_list_payload(list);
   RC rc = RC_SUCCESS;
@@ -576,45 +572,6 @@ RC elmc_int_list_to_cons(ElmcValue **out, ElmcValue *list) {
     result = NULL;
   CATCH_END
   elmc_release(cell);
-  elmc_release(result);
-  return rc;
-}
-
-static RC elmc_int_list_foldl(ElmcValue **out, ElmcValue *function, ElmcValue *acc, ElmcValue *list) {
-  ElmcIntListPayload *payload = elmc_int_list_payload(list);
-  RC rc = RC_SUCCESS;
-  ElmcValue *result = elmc_retain(acc);
-  CATCH_BEGIN
-    if (!payload) {
-      rc = RC_ERR_INVALID_ARG;
-      CHECK_RC(rc);
-    }
-    for (int i = 0; i < payload->length; i++) {
-      ElmcValue *boxed = NULL;
-      ElmcValue *next = NULL;
-      rc = elmc_new_int(&boxed, payload->values[i]);
-      CHECK_RC(rc);
-      ElmcValue *args[2] = { boxed, result };
-      rc = elmc_closure_call_rc(&next, function, args, 2);
-      elmc_release(boxed);
-      CHECK_RC(rc);
-      if (!elmc_value_is_boxed_int(next)) {
-        ElmcValue *cons = NULL;
-        elmc_release(next);
-        elmc_release(result);
-        result = NULL;
-        rc = elmc_int_list_to_cons(&cons, list);
-        CHECK_RC(rc);
-        rc = elmc_list_foldl(out, function, acc, cons);
-        elmc_release(cons);
-        return rc;
-      }
-      elmc_release(result);
-      result = next;
-    }
-    *out = result;
-    result = NULL;
-  CATCH_END
   elmc_release(result);
   return rc;
 }
@@ -1690,6 +1647,26 @@ RC elmc_cmd1(ElmcValue **out, elmc_int_t kind, elmc_int_t p0) {
   return elmc_cmd_alloc(out, 1, kind, p0, 0, 0, 0, 0, 0);
 }
 
+RC elmc_cmd1_string(ElmcValue **out, elmc_int_t kind, elmc_int_t p0, const char *text) {
+  RC rc = RC_SUCCESS;
+  CATCH_BEGIN
+    rc = elmc_cmd_alloc(out, 1, kind, p0, 0, 0, 0, 0, 0);
+    CHECK_RC(rc);
+    if (!*out || (*out)->tag != ELMC_TAG_CMD || !(*out)->payload) {
+      rc = RC_ERR_INVALID_ARG;
+      CHECK_RC(rc);
+    }
+    ElmcCmdPayload *cmd = (ElmcCmdPayload *)(*out)->payload;
+    rc = elmc_new_string(&cmd->text, text ? text : "");
+    CHECK_RC(rc);
+  CATCH_END
+  if (rc != RC_SUCCESS && out && *out) {
+    elmc_release(*out);
+    *out = NULL;
+  }
+  return rc;
+}
+
 RC elmc_cmd_companion_send_value(ElmcValue **out, ElmcValue *message) {
   RC rc = RC_SUCCESS;
   CATCH_BEGIN
@@ -2330,6 +2307,10 @@ ElmcValue *elmc_list_is_empty(ElmcValue *list) {
   return elmc_bool(list->payload == NULL);
 }
 
+RC elmc_list_length(ElmcValue **out, ElmcValue *list) {
+  return elmc_new_int(out, elmc_list_length_native(list));
+}
+
 elmc_int_t elmc_list_length_native(ElmcValue *list) {
   if (list && list->tag == ELMC_TAG_INT_LIST) {
     return (elmc_int_t)elmc_int_list_length_native(list);
@@ -2351,36 +2332,6 @@ elmc_int_t elmc_list_length_native(ElmcValue *list) {
 
 RC elmc_list_reverse(ElmcValue **out, ElmcValue *list) {
   return elmc_list_reverse_into(out, list);
-}
-
-RC elmc_list_foldl(ElmcValue **out, ElmcValue *f, ElmcValue *acc, ElmcValue *list) {
-  if (list && list->tag == ELMC_TAG_INT_LIST) {
-    return elmc_int_list_foldl(out, f, acc, list);
-  }
-  RC rc = RC_SUCCESS;
-  ElmcValue *result = elmc_retain(acc);
-  ElmcValue *next = NULL;
-  CATCH_BEGIN
-    ElmcValue *cursor = list;
-    while (cursor && cursor->tag == ELMC_TAG_LIST && cursor->payload != NULL) {
-      ElmcCons *node = (ElmcCons *)cursor->payload;
-      ElmcValue *args[2] = { node->head, result };
-      next = NULL;
-      rc = elmc_closure_call_rc(&next, f, args, 2);
-      CHECK_RC(rc);
-      elmc_release(result);
-      result = next;
-      next = NULL;
-      cursor = node->tail;
-    }
-    if (rc == RC_SUCCESS) {
-      *out = result;
-      result = NULL;
-    }
-  CATCH_END
-  elmc_release(next);
-  elmc_release(result);
-  return rc;
 }
 
 RC elmc_list_range(ElmcValue **out, elmc_int_t lo, elmc_int_t hi) {
@@ -2422,14 +2373,6 @@ RC elmc_list_range(ElmcValue **out, elmc_int_t lo, elmc_int_t hi) {
   elmc_release(next);
   elmc_release(acc);
   return rc;
-}
-
-RC elmc_string_length_val(ElmcValue **out, ElmcValue *s) {
-  if (!s || s->tag != ELMC_TAG_STRING || !s->payload) {
-    *out = elmc_int_zero();
-    return RC_SUCCESS;
-  }
-  return elmc_new_int(out, (int64_t)elmc_string_byte_len(s));
 }
 
 RC elmc_string_from_native_int(ElmcValue **out, elmc_int_t n) {

@@ -162,6 +162,69 @@ encodeDictStringBy prefix encodeValue dict =
 
 
 
+encodeThemeColorCode : ThemeColor -> Int
+encodeThemeColorCode value =
+    case value of
+        WatchBody ->
+            1
+
+        Cream ->
+            2
+
+        White ->
+            3
+
+        Black ->
+            4
+
+        Brass ->
+            5
+
+        Navy ->
+            6
+
+        Slate ->
+            7
+
+        Burgundy ->
+            8
+
+        Magenta ->
+            9
+
+
+decodeThemeColorCode : Int -> Maybe ThemeColor
+decodeThemeColorCode value =
+    case value of
+        1 ->
+            Just WatchBody
+
+        2 ->
+            Just Cream
+
+        3 ->
+            Just White
+
+        4 ->
+            Just Black
+
+        5 ->
+            Just Brass
+
+        6 ->
+            Just Navy
+
+        7 ->
+            Just Slate
+
+        8 ->
+            Just Burgundy
+
+        9 ->
+            Just Magenta
+
+        _ ->
+            Nothing
 
 
 
@@ -198,6 +261,26 @@ encodePhoneToWatch msg =
             Encode.object
                 ([ ( "message_tag", Encode.int 203 )
                 , ( "set_quote_display_seconds_field1", Encode.int field1 ) ])
+
+        SetWatchBackground field1 ->
+            Encode.object
+                ([ ( "message_tag", Encode.int 204 )
+                , ( "set_watch_background_field1", Encode.int (encodeThemeColorCode field1) ) ])
+
+        SetWatchForeground field1 ->
+            Encode.object
+                ([ ( "message_tag", Encode.int 205 )
+                , ( "set_watch_foreground_field1", Encode.int (encodeThemeColorCode field1) ) ])
+
+        SetQuoteBackground field1 ->
+            Encode.object
+                ([ ( "message_tag", Encode.int 206 )
+                , ( "set_quote_background_field1", Encode.int (encodeThemeColorCode field1) ) ])
+
+        SetQuoteTextColor field1 ->
+            Encode.object
+                ([ ( "message_tag", Encode.int 207 )
+                , ( "set_quote_text_color_field1", Encode.int (encodeThemeColorCode field1) ) ])
 
 
 watchToPhoneTag : WatchToPhone -> Int

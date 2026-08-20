@@ -79,6 +79,461 @@ void elmc_pebble_render_diag_log(const char *phase, int render_seq, const ElmcPe
 }
 #endif
 
+/* Contract line for the IDE emulator panel. Emit once, then only when a
+   scene watermark grows. Periodic APP_LOG fragments tight heaps. */
+#if defined(ELMC_PEBBLE_PLATFORM)
+static int elmc_stats_scene_bytes_max = 0;
+static int elmc_stats_scene_cmds_max = 0;
+static int elmc_stats_scene_cap = 0;
+static unsigned long elmc_stats_heap_free_min = 0;
+static int elmc_stats_emitted = 0;
+
+void elmc_pebble_note_runtime_stats(const ElmcPebbleApp *app) {
+  unsigned long heap_free = (unsigned long)heap_bytes_free();
+  int scene_bytes = app ? app->scene.byte_count : 0;
+  int scene_cmds = app ? app->scene.command_count : 0;
+  int scene_cap = app ? app->scene.byte_capacity : 0;
+  int changed = 0;
+  if (scene_bytes > elmc_stats_scene_bytes_max) {
+    elmc_stats_scene_bytes_max = scene_bytes;
+    changed = 1;
+  }
+  if (scene_cmds > elmc_stats_scene_cmds_max) {
+    elmc_stats_scene_cmds_max = scene_cmds;
+    changed = 1;
+  }
+  if (scene_cap > elmc_stats_scene_cap) {
+    elmc_stats_scene_cap = scene_cap;
+    changed = 1;
+  }
+  if (elmc_stats_heap_free_min == 0 || heap_free < elmc_stats_heap_free_min) {
+    elmc_stats_heap_free_min = heap_free;
+  }
+  if (!changed && elmc_stats_emitted) return;
+  elmc_stats_emitted = 1;
+  APP_LOG(APP_LOG_LEVEL_INFO,
+          "elmc-stats scene_bytes=%d scene_cmds=%d scene_cap=%d heap_free=%lu heap_free_min=%lu",
+          elmc_stats_scene_bytes_max,
+          elmc_stats_scene_cmds_max,
+          elmc_stats_scene_cap,
+          heap_free,
+          elmc_stats_heap_free_min);
+}
+#else
+void elmc_pebble_note_runtime_stats(const ElmcPebbleApp *app) {
+  (void)app;
+}
+#endif
+
+int64_t elmc_pebble_watch_color_to_elm_tag(int color) {
+  switch (color) {
+  #ifdef WATCH_INFO_COLOR_UNKNOWN
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_UNKNOWNCOLOR
+    case WATCH_INFO_COLOR_UNKNOWN:
+      return ELMC_PEBBLE_WATCH_COLOR_UNKNOWNCOLOR;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_BLACK
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_BLACK
+    case WATCH_INFO_COLOR_BLACK:
+      return ELMC_PEBBLE_WATCH_COLOR_BLACK;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_WHITE
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_WHITE
+    case WATCH_INFO_COLOR_WHITE:
+      return ELMC_PEBBLE_WATCH_COLOR_WHITE;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_RED
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_RED
+    case WATCH_INFO_COLOR_RED:
+      return ELMC_PEBBLE_WATCH_COLOR_RED;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_ORANGE
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_ORANGE
+    case WATCH_INFO_COLOR_ORANGE:
+      return ELMC_PEBBLE_WATCH_COLOR_ORANGE;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_GRAY
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_GRAY
+    case WATCH_INFO_COLOR_GRAY:
+      return ELMC_PEBBLE_WATCH_COLOR_GRAY;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_STAINLESS_STEEL
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_STAINLESSSTEEL
+    case WATCH_INFO_COLOR_STAINLESS_STEEL:
+      return ELMC_PEBBLE_WATCH_COLOR_STAINLESSSTEEL;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_MATTE_BLACK
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_MATTEBLACK
+    case WATCH_INFO_COLOR_MATTE_BLACK:
+      return ELMC_PEBBLE_WATCH_COLOR_MATTEBLACK;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_BLUE
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_BLUE
+    case WATCH_INFO_COLOR_BLUE:
+      return ELMC_PEBBLE_WATCH_COLOR_BLUE;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_GREEN
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_GREEN
+    case WATCH_INFO_COLOR_GREEN:
+      return ELMC_PEBBLE_WATCH_COLOR_GREEN;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_PINK
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_PINK
+    case WATCH_INFO_COLOR_PINK:
+      return ELMC_PEBBLE_WATCH_COLOR_PINK;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_TIME_WHITE
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_TIMEWHITE
+    case WATCH_INFO_COLOR_TIME_WHITE:
+      return ELMC_PEBBLE_WATCH_COLOR_TIMEWHITE;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_TIME_BLACK
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_TIMEBLACK
+    case WATCH_INFO_COLOR_TIME_BLACK:
+      return ELMC_PEBBLE_WATCH_COLOR_TIMEBLACK;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_TIME_RED
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_TIMERED
+    case WATCH_INFO_COLOR_TIME_RED:
+      return ELMC_PEBBLE_WATCH_COLOR_TIMERED;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_TIME_STEEL_SILVER
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_TIMESTEELSILVER
+    case WATCH_INFO_COLOR_TIME_STEEL_SILVER:
+      return ELMC_PEBBLE_WATCH_COLOR_TIMESTEELSILVER;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_TIME_STEEL_BLACK
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_TIMESTEELBLACK
+    case WATCH_INFO_COLOR_TIME_STEEL_BLACK:
+      return ELMC_PEBBLE_WATCH_COLOR_TIMESTEELBLACK;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_TIME_STEEL_GOLD
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_TIMESTEELGOLD
+    case WATCH_INFO_COLOR_TIME_STEEL_GOLD:
+      return ELMC_PEBBLE_WATCH_COLOR_TIMESTEELGOLD;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_TIME_ROUND_SILVER_14
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_TIMEROUNDSILVER14
+    case WATCH_INFO_COLOR_TIME_ROUND_SILVER_14:
+      return ELMC_PEBBLE_WATCH_COLOR_TIMEROUNDSILVER14;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_TIME_ROUND_BLACK_14
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_TIMEROUNDBLACK14
+    case WATCH_INFO_COLOR_TIME_ROUND_BLACK_14:
+      return ELMC_PEBBLE_WATCH_COLOR_TIMEROUNDBLACK14;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_TIME_ROUND_SILVER_20
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_TIMEROUNDSILVER20
+    case WATCH_INFO_COLOR_TIME_ROUND_SILVER_20:
+      return ELMC_PEBBLE_WATCH_COLOR_TIMEROUNDSILVER20;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_TIME_ROUND_BLACK_20
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_TIMEROUNDBLACK20
+    case WATCH_INFO_COLOR_TIME_ROUND_BLACK_20:
+      return ELMC_PEBBLE_WATCH_COLOR_TIMEROUNDBLACK20;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_TIME_ROUND_ROSE_GOLD_14
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_TIMEROUNDROSEGOLD14
+    case WATCH_INFO_COLOR_TIME_ROUND_ROSE_GOLD_14:
+      return ELMC_PEBBLE_WATCH_COLOR_TIMEROUNDROSEGOLD14;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_PEBBLE_2_HR_BLACK
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_PEBBLE2HRBLACK
+    case WATCH_INFO_COLOR_PEBBLE_2_HR_BLACK:
+      return ELMC_PEBBLE_WATCH_COLOR_PEBBLE2HRBLACK;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_PEBBLE_2_HR_LIME
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_PEBBLE2HRLIME
+    case WATCH_INFO_COLOR_PEBBLE_2_HR_LIME:
+      return ELMC_PEBBLE_WATCH_COLOR_PEBBLE2HRLIME;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_PEBBLE_2_HR_FLAME
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_PEBBLE2HRFLAME
+    case WATCH_INFO_COLOR_PEBBLE_2_HR_FLAME:
+      return ELMC_PEBBLE_WATCH_COLOR_PEBBLE2HRFLAME;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_PEBBLE_2_HR_WHITE
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_PEBBLE2HRWHITE
+    case WATCH_INFO_COLOR_PEBBLE_2_HR_WHITE:
+      return ELMC_PEBBLE_WATCH_COLOR_PEBBLE2HRWHITE;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_PEBBLE_2_HR_AQUA
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_PEBBLE2HRAQUA
+    case WATCH_INFO_COLOR_PEBBLE_2_HR_AQUA:
+      return ELMC_PEBBLE_WATCH_COLOR_PEBBLE2HRAQUA;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_PEBBLE_2_SE_BLACK
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_PEBBLE2SEBLACK
+    case WATCH_INFO_COLOR_PEBBLE_2_SE_BLACK:
+      return ELMC_PEBBLE_WATCH_COLOR_PEBBLE2SEBLACK;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_PEBBLE_2_SE_WHITE
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_PEBBLE2SEWHITE
+    case WATCH_INFO_COLOR_PEBBLE_2_SE_WHITE:
+      return ELMC_PEBBLE_WATCH_COLOR_PEBBLE2SEWHITE;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_PEBBLE_TIME_2_BLACK
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_PEBBLETIME2BLACK
+    case WATCH_INFO_COLOR_PEBBLE_TIME_2_BLACK:
+      return ELMC_PEBBLE_WATCH_COLOR_PEBBLETIME2BLACK;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_PEBBLE_TIME_2_SILVER
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_PEBBLETIME2SILVER
+    case WATCH_INFO_COLOR_PEBBLE_TIME_2_SILVER:
+      return ELMC_PEBBLE_WATCH_COLOR_PEBBLETIME2SILVER;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_PEBBLE_TIME_2_GOLD
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_PEBBLETIME2GOLD
+    case WATCH_INFO_COLOR_PEBBLE_TIME_2_GOLD:
+      return ELMC_PEBBLE_WATCH_COLOR_PEBBLETIME2GOLD;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_COREDEVICES_P2D_BLACK
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_COREDEVICESP2DBLACK
+    case WATCH_INFO_COLOR_COREDEVICES_P2D_BLACK:
+      return ELMC_PEBBLE_WATCH_COLOR_COREDEVICESP2DBLACK;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_COREDEVICES_P2D_WHITE
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_COREDEVICESP2DWHITE
+    case WATCH_INFO_COLOR_COREDEVICES_P2D_WHITE:
+      return ELMC_PEBBLE_WATCH_COLOR_COREDEVICESP2DWHITE;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_COREDEVICES_PT2_BLACK_GREY
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_COREDEVICESPT2BLACKGREY
+    case WATCH_INFO_COLOR_COREDEVICES_PT2_BLACK_GREY:
+      return ELMC_PEBBLE_WATCH_COLOR_COREDEVICESPT2BLACKGREY;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_COREDEVICES_PT2_BLACK_RED
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_COREDEVICESPT2BLACKRED
+    case WATCH_INFO_COLOR_COREDEVICES_PT2_BLACK_RED:
+      return ELMC_PEBBLE_WATCH_COLOR_COREDEVICESPT2BLACKRED;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_COREDEVICES_PT2_SILVER_BLUE
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_COREDEVICESPT2SILVERBLUE
+    case WATCH_INFO_COLOR_COREDEVICES_PT2_SILVER_BLUE:
+      return ELMC_PEBBLE_WATCH_COLOR_COREDEVICESPT2SILVERBLUE;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_COREDEVICES_PT2_SILVER_GREY
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_COREDEVICESPT2SILVERGREY
+    case WATCH_INFO_COLOR_COREDEVICES_PT2_SILVER_GREY:
+      return ELMC_PEBBLE_WATCH_COLOR_COREDEVICESPT2SILVERGREY;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_COREDEVICES_PR2_BLACK_20
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_COREDEVICESPR2BLACK20
+    case WATCH_INFO_COLOR_COREDEVICES_PR2_BLACK_20:
+      return ELMC_PEBBLE_WATCH_COLOR_COREDEVICESPR2BLACK20;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_COREDEVICES_PR2_SILVER_20
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_COREDEVICESPR2SILVER20
+    case WATCH_INFO_COLOR_COREDEVICES_PR2_SILVER_20:
+      return ELMC_PEBBLE_WATCH_COLOR_COREDEVICESPR2SILVER20;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_COREDEVICES_PR2_GOLD_14
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_COREDEVICESPR2GOLD14
+    case WATCH_INFO_COLOR_COREDEVICES_PR2_GOLD_14:
+      return ELMC_PEBBLE_WATCH_COLOR_COREDEVICESPR2GOLD14;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_COLOR_COREDEVICES_PR2_SILVER_14
+  #ifdef ELMC_PEBBLE_WATCH_COLOR_COREDEVICESPR2SILVER14
+    case WATCH_INFO_COLOR_COREDEVICES_PR2_SILVER_14:
+      return ELMC_PEBBLE_WATCH_COLOR_COREDEVICESPR2SILVER14;
+  #endif
+  #endif
+
+    default:
+#ifdef ELMC_PEBBLE_WATCH_COLOR_UNKNOWNCOLOR
+      return ELMC_PEBBLE_WATCH_COLOR_UNKNOWNCOLOR;
+#else
+      return 0;
+#endif
+  }
+
+}
+
+int64_t elmc_pebble_watch_model_to_elm_tag(int model) {
+  switch (model) {
+  #ifdef WATCH_INFO_MODEL_UNKNOWN
+  #ifdef ELMC_PEBBLE_WATCH_MODEL_UNKNOWNMODEL
+    case WATCH_INFO_MODEL_UNKNOWN:
+      return ELMC_PEBBLE_WATCH_MODEL_UNKNOWNMODEL;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_MODEL_PEBBLE_ORIGINAL
+  #ifdef ELMC_PEBBLE_WATCH_MODEL_PEBBLEORIGINAL
+    case WATCH_INFO_MODEL_PEBBLE_ORIGINAL:
+      return ELMC_PEBBLE_WATCH_MODEL_PEBBLEORIGINAL;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_MODEL_PEBBLE_STEEL
+  #ifdef ELMC_PEBBLE_WATCH_MODEL_PEBBLESTEEL
+    case WATCH_INFO_MODEL_PEBBLE_STEEL:
+      return ELMC_PEBBLE_WATCH_MODEL_PEBBLESTEEL;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_MODEL_PEBBLE_TIME
+  #ifdef ELMC_PEBBLE_WATCH_MODEL_PEBBLETIME
+    case WATCH_INFO_MODEL_PEBBLE_TIME:
+      return ELMC_PEBBLE_WATCH_MODEL_PEBBLETIME;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_MODEL_PEBBLE_TIME_STEEL
+  #ifdef ELMC_PEBBLE_WATCH_MODEL_PEBBLETIMESTEEL
+    case WATCH_INFO_MODEL_PEBBLE_TIME_STEEL:
+      return ELMC_PEBBLE_WATCH_MODEL_PEBBLETIMESTEEL;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_MODEL_PEBBLE_TIME_ROUND_14
+  #ifdef ELMC_PEBBLE_WATCH_MODEL_PEBBLETIMEROUND14
+    case WATCH_INFO_MODEL_PEBBLE_TIME_ROUND_14:
+      return ELMC_PEBBLE_WATCH_MODEL_PEBBLETIMEROUND14;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_MODEL_PEBBLE_TIME_ROUND_20
+  #ifdef ELMC_PEBBLE_WATCH_MODEL_PEBBLETIMEROUND20
+    case WATCH_INFO_MODEL_PEBBLE_TIME_ROUND_20:
+      return ELMC_PEBBLE_WATCH_MODEL_PEBBLETIMEROUND20;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_MODEL_PEBBLE_2_HR
+  #ifdef ELMC_PEBBLE_WATCH_MODEL_PEBBLE2HR
+    case WATCH_INFO_MODEL_PEBBLE_2_HR:
+      return ELMC_PEBBLE_WATCH_MODEL_PEBBLE2HR;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_MODEL_PEBBLE_2_SE
+  #ifdef ELMC_PEBBLE_WATCH_MODEL_PEBBLE2SE
+    case WATCH_INFO_MODEL_PEBBLE_2_SE:
+      return ELMC_PEBBLE_WATCH_MODEL_PEBBLE2SE;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_MODEL_PEBBLE_TIME_2
+  #ifdef ELMC_PEBBLE_WATCH_MODEL_PEBBLETIME2
+    case WATCH_INFO_MODEL_PEBBLE_TIME_2:
+      return ELMC_PEBBLE_WATCH_MODEL_PEBBLETIME2;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_MODEL_COREDEVICES_P2D
+  #ifdef ELMC_PEBBLE_WATCH_MODEL_COREDEVICESP2D
+    case WATCH_INFO_MODEL_COREDEVICES_P2D:
+      return ELMC_PEBBLE_WATCH_MODEL_COREDEVICESP2D;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_MODEL_COREDEVICES_PT2
+  #ifdef ELMC_PEBBLE_WATCH_MODEL_COREDEVICESPT2
+    case WATCH_INFO_MODEL_COREDEVICES_PT2:
+      return ELMC_PEBBLE_WATCH_MODEL_COREDEVICESPT2;
+  #endif
+  #endif
+
+  #ifdef WATCH_INFO_MODEL_COREDEVICES_PR2
+  #ifdef ELMC_PEBBLE_WATCH_MODEL_COREDEVICESPR2
+    case WATCH_INFO_MODEL_COREDEVICES_PR2:
+      return ELMC_PEBBLE_WATCH_MODEL_COREDEVICESPR2;
+  #endif
+  #endif
+
+    default:
+#ifdef ELMC_PEBBLE_WATCH_MODEL_UNKNOWNMODEL
+      return ELMC_PEBBLE_WATCH_MODEL_UNKNOWNMODEL;
+#else
+      return 0;
+#endif
+  }
+
+}
+
     #ifndef ELMC_AGENT_PROBES
     #define ELMC_AGENT_PROBES 0
     #endif
@@ -456,6 +911,94 @@ static int elmc_decode_path_payload(ElmcValue *payload, ElmcPebbleDrawCmd *out_c
           cmd->text[0] = '\0';
         }
 
+/* Tight-RAM realloc often cannot grow in place: the heap has enough
+   total free bytes but not a contiguous old+new hole. Remember the
+   size we wanted, free the current slot, and let the next empty
+   alloc malloc that size after the old block is back on the heap. */
+#if defined(ELMC_PEBBLE_APP_TIGHT_RAM)
+static int elmc_pebble_scene_grow_hint = 0;
+#ifndef ELMC_PEBBLE_SCENE_GROW_RETRY_MAX
+#define ELMC_PEBBLE_SCENE_GROW_RETRY_MAX 8
+#endif
+#endif
+
+static int elmc_pebble_scene_next_capacity(int current, int min_capacity) {
+  int next = current > 0 ? current : 0;
+  while (next < min_capacity) {
+    if (next == 0) {
+      int first = ELMC_PEBBLE_SCENE_INITIAL_CAPACITY;
+#if defined(ELMC_PEBBLE_APP_TIGHT_RAM)
+      if (elmc_pebble_scene_grow_hint > first) first = elmc_pebble_scene_grow_hint;
+#endif
+      next = first;
+    } else if (next < ELMC_PEBBLE_SCENE_INITIAL_CAPACITY) {
+      next += ELMC_PEBBLE_SCENE_GROW_CHUNK;
+    } else {
+#if defined(ELMC_PEBBLE_APP_TIGHT_RAM)
+      /* Exact-need grows (+1/+2 per command) fragment the heap; realloc
+         then fails even when heap_bytes_free() is still >1KB. */
+      next += ELMC_PEBBLE_SCENE_GROW_CHUNK;
+      if (next < min_capacity) next = min_capacity;
+#else
+      next *= 2;
+#endif
+    }
+  }
+  return next;
+}
+
+static void elmc_pebble_scene_clear_grow_hint(void) {
+#if defined(ELMC_PEBBLE_APP_TIGHT_RAM)
+  elmc_pebble_scene_grow_hint = 0;
+#endif
+}
+
+static int elmc_pebble_scene_should_retry_grow(int *attempts) {
+#if defined(ELMC_PEBBLE_APP_TIGHT_RAM)
+  if (elmc_pebble_scene_grow_hint > 0 && attempts &&
+      *attempts < ELMC_PEBBLE_SCENE_GROW_RETRY_MAX) {
+    *attempts += 1;
+    return 1;
+  }
+#else
+  (void)attempts;
+#endif
+  return 0;
+}
+
+static void elmc_pebble_scene_note_grow_fail(int next_capacity, int have, int used) {
+#if defined(ELMC_PEBBLE_PLATFORM)
+  APP_LOG(APP_LOG_LEVEL_ERROR,
+          "elmc scene buffer alloc failed need=%d have=%d used=%d free=%lu",
+          next_capacity,
+          have,
+          used,
+          (unsigned long)heap_bytes_free());
+#else
+  (void)used;
+#endif
+#if defined(ELMC_PEBBLE_APP_TIGHT_RAM)
+#ifndef ELMC_PEBBLE_SCENE_GROW_HINT_CAP
+#define ELMC_PEBBLE_SCENE_GROW_HINT_CAP 1024
+#endif
+  if (have <= 0) {
+    /* Hinted empty-slot malloc failed; do not climb further. */
+    elmc_pebble_scene_grow_hint = 0;
+  } else {
+    /* Restart at the size realloc wanted, not 2x — a doubled malloc
+       fails on a fragmented heap even when need itself would fit. */
+    int hint = next_capacity;
+    if (hint > ELMC_PEBBLE_SCENE_GROW_HINT_CAP) hint = ELMC_PEBBLE_SCENE_GROW_HINT_CAP;
+    elmc_pebble_scene_grow_hint = hint;
+  }
+#endif
+  elmc_pebble_note_runtime_stats(NULL);
+#if !defined(ELMC_PEBBLE_APP_TIGHT_RAM)
+  (void)next_capacity;
+  (void)have;
+#endif
+}
+
 #if ELMC_PEBBLE_SCENE_POOL_SLOTS > 0
 typedef struct {
   unsigned char *bytes;
@@ -483,43 +1026,56 @@ static int elmc_pebble_scene_pool_grow_slot(ElmcPebbleSceneBuffer *scene, int mi
     elmc_pebble_scene_pool_sync_from_slot(scene);
     return 0;
   }
-  int next_capacity = slot->capacity > 0 ? slot->capacity : 0;
-  while (next_capacity < min_capacity) {
-    if (next_capacity == 0) {
-      next_capacity = ELMC_PEBBLE_SCENE_INITIAL_CAPACITY;
-    } else if (next_capacity < ELMC_PEBBLE_SCENE_INITIAL_CAPACITY) {
-      next_capacity += ELMC_PEBBLE_SCENE_GROW_CHUNK;
-    } else {
-      next_capacity *= 2;
-    }
-  }
-  unsigned char *grown = (unsigned char *)malloc((size_t)next_capacity);
+  int next_capacity = elmc_pebble_scene_next_capacity(slot->capacity, min_capacity);
+  /* realloc may grow in place; on failure the old pointer stays valid. */
+  unsigned char *grown = (unsigned char *)realloc(slot->bytes, (size_t)next_capacity);
   if (!grown) {
-#if defined(ELMC_PEBBLE_PLATFORM)
-    APP_LOG(APP_LOG_LEVEL_ERROR,
-            "elmc scene buffer alloc failed need=%d have=%d used=%d free=%lu",
-            next_capacity,
-            slot->capacity,
-            scene->byte_count,
-            (unsigned long)heap_bytes_free());
+    elmc_pebble_scene_note_grow_fail(next_capacity, slot->capacity, scene->byte_count);
+#if defined(ELMC_PEBBLE_APP_TIGHT_RAM)
+    /* Free-then-restart: keep the last-good frame in the other slot and
+       return this block so the next empty malloc can use the hole. */
+    free(slot->bytes);
+    slot->bytes = NULL;
+    slot->capacity = 0;
+    scene->bytes = NULL;
+    scene->byte_capacity = 0;
 #endif
     return -2;
   }
-  if (slot->bytes && scene->byte_count > 0) {
-    memcpy(grown, slot->bytes, (size_t)scene->byte_count);
-  }
-  free(slot->bytes);
   slot->bytes = grown;
   slot->capacity = next_capacity;
   elmc_pebble_scene_pool_sync_from_slot(scene);
   return 0;
 }
 
+static void elmc_pebble_scene_pool_release_slot(int slot) {
+  if (slot < 0 || slot >= ELMC_PEBBLE_SCENE_POOL_SLOTS) return;
+  free(elmc_pebble_scene_pool[slot].bytes);
+  elmc_pebble_scene_pool[slot].bytes = NULL;
+  elmc_pebble_scene_pool[slot].capacity = 0;
+}
+
+static void elmc_pebble_scene_pool_release_unused(const ElmcPebbleSceneBuffer *keep) {
+#if defined(ELMC_PEBBLE_APP_TIGHT_RAM)
+  int keep_slot = (keep && elmc_pebble_scene_using_pool(keep)) ? keep->pool_slot : -1;
+  int keep_cap = (keep_slot >= 0) ? elmc_pebble_scene_pool[keep_slot].capacity : 0;
+  for (int i = 0; i < ELMC_PEBBLE_SCENE_POOL_SLOTS; i++) {
+    if (i == keep_slot) continue;
+    /* Drop a same-view double-buffer copy. Keep a larger unused slot so
+     * a later heavier view can reuse it instead of reallocating. */
+    if (elmc_pebble_scene_pool[i].capacity > 0 &&
+        elmc_pebble_scene_pool[i].capacity <= keep_cap) {
+      elmc_pebble_scene_pool_release_slot(i);
+    }
+  }
+#else
+  (void)keep;
+#endif
+}
+
 static void elmc_pebble_scene_pool_free_all(void) {
   for (int i = 0; i < ELMC_PEBBLE_SCENE_POOL_SLOTS; i++) {
-    free(elmc_pebble_scene_pool[i].bytes);
-    elmc_pebble_scene_pool[i].bytes = NULL;
-    elmc_pebble_scene_pool[i].capacity = 0;
+    elmc_pebble_scene_pool_release_slot(i);
   }
 }
 #else
@@ -626,32 +1182,18 @@ static int elmc_pebble_scene_reserve_capacity(ElmcPebbleApp *app, int min_capaci
   }
 #endif
   if (app->scene.byte_capacity >= min_capacity) return 0;
-  int next_capacity = app->scene.byte_capacity > 0 ? app->scene.byte_capacity : 0;
-  while (next_capacity < min_capacity) {
-    if (next_capacity == 0) {
-      next_capacity = ELMC_PEBBLE_SCENE_INITIAL_CAPACITY;
-    } else if (next_capacity < ELMC_PEBBLE_SCENE_INITIAL_CAPACITY) {
-      next_capacity += ELMC_PEBBLE_SCENE_GROW_CHUNK;
-    } else {
-      next_capacity *= 2;
-    }
-  }
-  unsigned char *next = (unsigned char *)malloc((size_t)next_capacity);
+  int next_capacity = elmc_pebble_scene_next_capacity(app->scene.byte_capacity, min_capacity);
+  unsigned char *next = (unsigned char *)realloc(app->scene.bytes, (size_t)next_capacity);
   if (!next) {
-#if defined(ELMC_PEBBLE_PLATFORM)
-    APP_LOG(APP_LOG_LEVEL_ERROR,
-            "elmc scene buffer alloc failed need=%d have=%d used=%d free=%lu",
-            next_capacity,
-            app->scene.byte_capacity,
-            app->scene.byte_count,
-            (unsigned long)heap_bytes_free());
+    elmc_pebble_scene_note_grow_fail(
+        next_capacity, app->scene.byte_capacity, app->scene.byte_count);
+#if defined(ELMC_PEBBLE_APP_TIGHT_RAM)
+    free(app->scene.bytes);
+    app->scene.bytes = NULL;
+    app->scene.byte_capacity = 0;
 #endif
     return -2;
   }
-  if (app->scene.bytes && app->scene.byte_count > 0) {
-    memcpy(next, app->scene.bytes, (size_t)app->scene.byte_count);
-  }
-  free(app->scene.bytes);
   app->scene.bytes = next;
   app->scene.byte_capacity = next_capacity;
   return 0;
@@ -831,6 +1373,16 @@ static int elmc_scene_path_extra_size(const ElmcPebbleDrawCmd *cmd) {
     #if ELMC_PEBBLE_SCENE_CHUNK_SIZE > 0
       elmc_pebble_scene_chunks_free(scene);
     #endif
+    #if ELMC_PEBBLE_SCENE_STATIC_CAPACITY > 0
+      if (elmc_pebble_scene_using_static(scene)) {
+        scene->byte_count = 0;
+        scene->command_count = 0;
+        scene->hash = 0;
+        scene->dirty = 1;
+        scene->byte_capacity = ELMC_PEBBLE_SCENE_STATIC_CAPACITY;
+        return;
+      }
+    #endif
       scene->bytes = NULL;
       scene->byte_count = 0;
       scene->byte_capacity = 0;
@@ -858,6 +1410,7 @@ static int elmc_scene_path_extra_size(const ElmcPebbleDrawCmd *cmd) {
       }
     #elif ELMC_PEBBLE_SCENE_POOL_SLOTS >= 2 && ELMC_PEBBLE_SCENE_CACHE_ENABLED
       if (app->scene_rebuild_fallback_byte_count > 0) {
+        int failed_slot = app->scene.pool_slot;
         app->scene.pool_slot = app->scene_rebuild_fallback_slot;
         elmc_pebble_scene_pool_sync_from_slot(&app->scene);
         app->scene.byte_count = app->scene_rebuild_fallback_byte_count;
@@ -865,11 +1418,28 @@ static int elmc_scene_path_extra_size(const ElmcPebbleDrawCmd *cmd) {
         app->scene.dirty = 1;
         app->scene_rebuild_fallback_byte_count = 0;
         app->scene_rebuild_fallback_command_count = 0;
+        if (failed_slot != app->scene.pool_slot) {
+          elmc_pebble_scene_pool_release_slot(failed_slot);
+        }
         return;
       }
     #endif
+      /* No last-good frame: drop the failed slot so a retry can grow it again
+         instead of leaking the partial buffer and allocating the other slot. */
+    #if ELMC_PEBBLE_SCENE_POOL_SLOTS > 0
+      {
+        int failed_slot = app->scene.pool_slot;
+        elmc_pebble_scene_discard_build(app);
+        elmc_pebble_scene_buffer_detach(&app->scene);
+        elmc_pebble_scene_pool_release_slot(failed_slot);
+        app->scene.pool_slot = (failed_slot >= 0) ? failed_slot : 0;
+        elmc_pebble_scene_pool_sync_from_slot(&app->scene);
+        return;
+      }
+    #else
       elmc_pebble_scene_discard_build(app);
       elmc_pebble_scene_buffer_detach(&app->scene);
+    #endif
     }
 
     static void elmc_pebble_scene_free(ElmcPebbleApp *app) {
@@ -900,16 +1470,24 @@ static void elmc_pebble_prepare_scene_rebuild(ElmcPebbleApp *app) {
   app->scene.byte_capacity = 0;
   app->scene.pool_slot = app->prev_scene.pool_slot == 0 ? 1 : 0;
 #elif ELMC_PEBBLE_SCENE_POOL_SLOTS >= 2 && ELMC_PEBBLE_SCENE_CACHE_ENABLED
-  /* Flip to an alternate pool slot so a failed rebuild cannot wipe the last
-     good encoded frame (draw clears to white when byte_count==0 → gray face). */
+  /* Flip only when a complete frame exists. An empty first encode must grow
+     the current slot; flipping would allocate a second buffer after a failed
+     attempt whose bytes were still sitting in the unused slot. */
   app->scene_rebuild_fallback_slot = app->scene.pool_slot;
   app->scene_rebuild_fallback_byte_count = app->scene.byte_count;
   app->scene_rebuild_fallback_command_count = app->scene.command_count;
-  app->scene.pool_slot = app->scene.pool_slot == 0 ? 1 : 0;
+  if (app->scene.byte_count > 0) {
+    app->scene.pool_slot = app->scene.pool_slot == 0 ? 1 : 0;
+  }
   app->scene.byte_count = 0;
   elmc_pebble_scene_pool_sync_from_slot(&app->scene);
 #else
   app->scene.byte_count = 0;
+#if ELMC_PEBBLE_SCENE_STATIC_CAPACITY > 0
+  if (!app->scene.bytes) {
+    elmc_pebble_scene_bind_static(&app->scene);
+  }
+#endif
 #if ELMC_PEBBLE_SCENE_POOL_SLOTS > 0
   elmc_pebble_scene_pool_sync_from_slot(&app->scene);
 #endif
@@ -3244,6 +3822,10 @@ static int elmc_msg_constructor_arity(elmc_int_t tag) {
       case ELMC_PEBBLE_MSG_LOADEDWATCHSECONDS: return 1;
       case ELMC_PEBBLE_MSG_LOADEDQUOTESECONDS: return 1;
       case ELMC_PEBBLE_MSG_LOADEDQUOTETEXT: return 1;
+      case ELMC_PEBBLE_MSG_LOADEDWATCHBACKGROUND: return 1;
+      case ELMC_PEBBLE_MSG_LOADEDWATCHFOREGROUND: return 1;
+      case ELMC_PEBBLE_MSG_LOADEDQUOTEBACKGROUND: return 1;
+      case ELMC_PEBBLE_MSG_LOADEDQUOTETEXTCOLOR: return 1;
       case ELMC_PEBBLE_MSG_GOTWATCHCOLOR: return 1;
     default: return 0;
   }
@@ -3632,7 +4214,11 @@ int elmc_pebble_msg_from_appmessage(int32_t key, int32_t value, int64_t *out_tag
       case ELMC_PEBBLE_MSG_LOADEDWATCHSECONDS: *out_tag = 6; return 0;
       case ELMC_PEBBLE_MSG_LOADEDQUOTESECONDS: *out_tag = 7; return 0;
       case ELMC_PEBBLE_MSG_LOADEDQUOTETEXT: *out_tag = 8; return 0;
-      case ELMC_PEBBLE_MSG_GOTWATCHCOLOR: *out_tag = 9; return 0;
+      case ELMC_PEBBLE_MSG_LOADEDWATCHBACKGROUND: *out_tag = 9; return 0;
+      case ELMC_PEBBLE_MSG_LOADEDWATCHFOREGROUND: *out_tag = 10; return 0;
+      case ELMC_PEBBLE_MSG_LOADEDQUOTEBACKGROUND: *out_tag = 11; return 0;
+      case ELMC_PEBBLE_MSG_LOADEDQUOTETEXTCOLOR: *out_tag = 12; return 0;
+      case ELMC_PEBBLE_MSG_GOTWATCHCOLOR: *out_tag = 13; return 0;
       default: return -3;
     }
   }
@@ -3647,7 +4233,11 @@ int elmc_pebble_msg_from_appmessage(int32_t key, int32_t value, int64_t *out_tag
       case ELMC_PEBBLE_MSG_LOADEDWATCHSECONDS: *out_tag = 6; return 0;
       case ELMC_PEBBLE_MSG_LOADEDQUOTESECONDS: *out_tag = 7; return 0;
       case ELMC_PEBBLE_MSG_LOADEDQUOTETEXT: *out_tag = 8; return 0;
-      case ELMC_PEBBLE_MSG_GOTWATCHCOLOR: *out_tag = 9; return 0;
+      case ELMC_PEBBLE_MSG_LOADEDWATCHBACKGROUND: *out_tag = 9; return 0;
+      case ELMC_PEBBLE_MSG_LOADEDWATCHFOREGROUND: *out_tag = 10; return 0;
+      case ELMC_PEBBLE_MSG_LOADEDQUOTEBACKGROUND: *out_tag = 11; return 0;
+      case ELMC_PEBBLE_MSG_LOADEDQUOTETEXTCOLOR: *out_tag = 12; return 0;
+      case ELMC_PEBBLE_MSG_GOTWATCHCOLOR: *out_tag = 13; return 0;
     default: return -3;
   }
 }
@@ -4166,7 +4756,10 @@ int elmc_pebble_view_commands_from(ElmcPebbleApp *app, ElmcPebbleDrawCmd *out_cm
         ELMC_DRAW_PATH_PROBE(ELMC_DRAW_PATH_ENSURE_SCENE_EXIT);
         ELMC_PEBBLE_GENERATED_TRACE_RETURN_INT("elmc_pebble_ensure_scene", 0);
       }
-      ELMC_PEBBLE_SCENE_LOG("elmc-scene ensure rebuild begin");
+      int elmc_pebble_ensure_attempts = 0;
+    elmc_pebble_ensure_retry:
+      ELMC_PEBBLE_SCENE_LOG("elmc-scene ensure rebuild begin attempt=%d",
+              elmc_pebble_ensure_attempts);
       elmc_pebble_prepare_scene_rebuild(app);
       elmc_pebble_scene_reset(app);
 #if defined(ELMC_PEBBLE_DIRECT_VIEW_SCENE)
@@ -4197,7 +4790,11 @@ int elmc_pebble_view_commands_from(ElmcPebbleApp *app, ElmcPebbleDrawCmd *out_cm
               app->scene.byte_capacity,
               (unsigned long)heap_bytes_free());
 #endif
+      elmc_pebble_note_runtime_stats(app);
       elmc_pebble_scene_abort_build(app);
+      if (elmc_pebble_scene_should_retry_grow(&elmc_pebble_ensure_attempts)) {
+        goto elmc_pebble_ensure_retry;
+      }
       ELMC_DRAW_PATH_PROBE(ELMC_DRAW_PATH_ENSURE_SCENE_EXIT);
       ELMC_PEBBLE_GENERATED_TRACE_RETURN_INT("elmc_pebble_ensure_scene", -1);
     }
@@ -4230,7 +4827,11 @@ int elmc_pebble_view_commands_from(ElmcPebbleApp *app, ElmcPebbleDrawCmd *out_cm
               app->scene.byte_capacity,
               (unsigned long)heap_bytes_free());
 #endif
+      elmc_pebble_note_runtime_stats(app);
       elmc_pebble_scene_abort_build(app);
+      if (elmc_pebble_scene_should_retry_grow(&elmc_pebble_ensure_attempts)) {
+        goto elmc_pebble_ensure_retry;
+      }
       ELMC_DRAW_PATH_PROBE(ELMC_DRAW_PATH_ENSURE_SCENE_EXIT);
       ELMC_PEBBLE_GENERATED_TRACE_RETURN_INT("elmc_pebble_ensure_scene", -1);
     }
@@ -4247,12 +4848,18 @@ int elmc_pebble_view_commands_from(ElmcPebbleApp *app, ElmcPebbleDrawCmd *out_cm
         int count = elmc_pebble_view_commands_raw_impl(app, &cmd, 1, skip, 0, &emitted_end);
         if (count < 0) {
           elmc_pebble_scene_abort_build(app);
+          if (elmc_pebble_scene_should_retry_grow(&elmc_pebble_ensure_attempts)) {
+            goto elmc_pebble_ensure_retry;
+          }
           ELMC_PEBBLE_GENERATED_TRACE_RETURN_INT("elmc_pebble_ensure_scene", count);
         }
         if (count == 0) break;
         RC rc = elmc_scene_writer_push_cmd(&writer, &cmd);
         if (rc != RC_SUCCESS) {
           elmc_pebble_scene_abort_build(app);
+          if (elmc_pebble_scene_should_retry_grow(&elmc_pebble_ensure_attempts)) {
+            goto elmc_pebble_ensure_retry;
+          }
           ELMC_PEBBLE_GENERATED_TRACE_RETURN_INT("elmc_pebble_ensure_scene", -2);
         }
         skip = emitted_end;
@@ -4263,6 +4870,9 @@ int elmc_pebble_view_commands_from(ElmcPebbleApp *app, ElmcPebbleDrawCmd *out_cm
         int mat_rc = elmc_pebble_scene_materialize_chunks(&app->scene);
         if (mat_rc != 0) {
           elmc_pebble_scene_abort_build(app);
+          if (elmc_pebble_scene_should_retry_grow(&elmc_pebble_ensure_attempts)) {
+            goto elmc_pebble_ensure_retry;
+          }
           ELMC_DRAW_PATH_PROBE(ELMC_DRAW_PATH_ENSURE_SCENE_EXIT);
           ELMC_PEBBLE_GENERATED_TRACE_RETURN_INT("elmc_pebble_ensure_scene", mat_rc);
         }
@@ -4294,6 +4904,7 @@ int elmc_pebble_view_commands_from(ElmcPebbleApp *app, ElmcPebbleDrawCmd *out_cm
         }
       }
     #endif
+      elmc_pebble_scene_clear_grow_hint();
       elmc_pebble_clear_view_cache(app);
       app->scene.dirty = 0;
     #if ELMC_PEBBLE_SCENE_CACHE_ENABLED
@@ -4309,6 +4920,9 @@ int elmc_pebble_view_commands_from(ElmcPebbleApp *app, ElmcPebbleDrawCmd *out_cm
       }
     #endif
     #if ELMC_PEBBLE_SCENE_POOL_SLOTS > 0
+      /* Tight-RAM: drop a same-size leftover copy after rebuild. Keep a larger
+         unused slot so a later heavier view can reuse it. */
+      elmc_pebble_scene_pool_release_unused(&app->scene);
       elmc_pebble_scene_pool_sync_from_slot(&app->scene);
     #endif
     #if ELMC_PEBBLE_SCENE_TRIM_SLACK > 0
@@ -4316,6 +4930,7 @@ int elmc_pebble_view_commands_from(ElmcPebbleApp *app, ElmcPebbleDrawCmd *out_cm
     #endif
       ELMC_PEBBLE_SCENE_LOG("elmc-scene ensure ok cmds=%d bytes=%d cap=%d",
               app->scene.command_count, app->scene.byte_count, app->scene.byte_capacity);
+      elmc_pebble_note_runtime_stats(app);
       ELMC_PEBBLE_GENERATED_TRACE_RETURN_INT("elmc_pebble_ensure_scene", 0);
     }
 int elmc_pebble_scene_command_count(ElmcPebbleApp *app) {

@@ -1,6 +1,6 @@
 module Main exposing (main)
 
-import Companion.Types exposing (PhoneToWatch(..), WatchToPhone(..))
+import Companion.Types exposing (PhoneToWatch(..), ThemeColor(..), WatchToPhone(..))
 import Companion.Watch as CompanionWatch
 import Json.Decode as Decode
 import Pebble.Events as PebbleEvents
@@ -26,6 +26,26 @@ storeQuoteSeconds =
 storeQuoteText : Int
 storeQuoteText =
     3
+
+
+storeWatchBackground : Int
+storeWatchBackground =
+    4
+
+
+storeWatchForeground : Int
+storeWatchForeground =
+    5
+
+
+storeQuoteBackground : Int
+storeQuoteBackground =
+    6
+
+
+storeQuoteTextColor : Int
+storeQuoteTextColor =
+    7
 
 
 defaultWatchSeconds : Int
@@ -103,6 +123,7 @@ type alias Model =
     { screenW : Int
     , screenH : Int
     , displayShape : PebblePlatform.DisplayShape
+    , colorMode : PebblePlatform.ColorCapability
     , now : Maybe PebbleTime.CurrentDateTime
     , quote : String
     , watchSeconds : Int
@@ -116,6 +137,10 @@ type alias Model =
     , quoteBox : Rect
     , quoteLines : List QuoteLine
     , caseColor : PebbleColor.Color
+    , watchBackground : ThemeColor
+    , watchForeground : ThemeColor
+    , quoteBackground : ThemeColor
+    , quoteText : ThemeColor
     }
 
 
@@ -128,6 +153,10 @@ type Msg
     | LoadedWatchSeconds Int
     | LoadedQuoteSeconds Int
     | LoadedQuoteText String
+    | LoadedWatchBackground Int
+    | LoadedWatchForeground Int
+    | LoadedQuoteBackground Int
+    | LoadedQuoteTextColor Int
     | GotWatchColor WatchInfo.WatchColor
 
 
@@ -142,6 +171,7 @@ init context =
             { screenW = context.screen.width
             , screenH = context.screen.height
             , displayShape = context.screen.shape
+            , colorMode = context.screen.colorMode
             , now = Nothing
             , quote = defaultQuote
             , watchSeconds = defaultWatchSeconds
@@ -155,6 +185,10 @@ init context =
             , quoteBox = { x = 0, y = 0, w = 1, h = 1 }
             , quoteLines = []
             , caseColor = WatchInfo.caseColor WatchInfo.UnknownColor
+            , watchBackground = Cream
+            , watchForeground = Black
+            , quoteBackground = Cream
+            , quoteText = Black
             }
         )
     , Cmd.batch
@@ -163,6 +197,10 @@ init context =
         , PebbleStorage.readInt storeWatchSeconds LoadedWatchSeconds
         , PebbleStorage.readInt storeQuoteSeconds LoadedQuoteSeconds
         , PebbleStorage.readString storeQuoteText LoadedQuoteText
+        , PebbleStorage.readInt storeWatchBackground LoadedWatchBackground
+        , PebbleStorage.readInt storeWatchForeground LoadedWatchForeground
+        , PebbleStorage.readInt storeQuoteBackground LoadedQuoteBackground
+        , PebbleStorage.readInt storeQuoteTextColor LoadedQuoteTextColor
         , WatchInfo.getColor GotWatchColor
         ]
     )
@@ -195,8 +233,20 @@ update msg model =
         LoadedQuoteText stored ->
             ( applyQuoteText stored model, Cmd.none )
 
+        LoadedWatchBackground stored ->
+            ( applyWatchBackground (themeColorFromCode stored Cream) model, Cmd.none )
+
+        LoadedWatchForeground stored ->
+            ( applyWatchForeground (themeColorFromCode stored Black) model, Cmd.none )
+
+        LoadedQuoteBackground stored ->
+            ( applyQuoteBackground (themeColorFromCode stored Cream) model, Cmd.none )
+
+        LoadedQuoteTextColor stored ->
+            ( applyQuoteTextColor (themeColorFromCode stored Black) model, Cmd.none )
+
         GotWatchColor color ->
-            ( { model | caseColor = WatchInfo.caseColor color }, Cmd.none )
+            ( refreshDraw { model | caseColor = WatchInfo.caseColor color }, Cmd.none )
 
 
 updateFromPhone : PhoneToWatch -> Model -> ( Model, Cmd Msg )
@@ -223,6 +273,18 @@ updateFromPhone message model =
             in
             ( applyQuoteSeconds next model, PebbleStorage.writeInt storeQuoteSeconds next )
 
+        SetWatchBackground color ->
+            ( applyWatchBackground color model, PebbleStorage.writeInt storeWatchBackground (themeColorCode color) )
+
+        SetWatchForeground color ->
+            ( applyWatchForeground color model, PebbleStorage.writeInt storeWatchForeground (themeColorCode color) )
+
+        SetQuoteBackground color ->
+            ( applyQuoteBackground color model, PebbleStorage.writeInt storeQuoteBackground (themeColorCode color) )
+
+        SetQuoteTextColor color ->
+            ( applyQuoteTextColor color model, PebbleStorage.writeInt storeQuoteTextColor (themeColorCode color) )
+
 
 applyWatchSeconds : Int -> Model -> Model
 applyWatchSeconds seconds model =
@@ -247,6 +309,122 @@ applyQuoteSeconds seconds model =
 applyQuoteText : String -> Model -> Model
 applyQuoteText text model =
     refreshQuoteLayout { model | quote = normalizeQuote text }
+
+
+applyWatchBackground : ThemeColor -> Model -> Model
+applyWatchBackground color model =
+    refreshDraw { model | watchBackground = color }
+
+
+applyWatchForeground : ThemeColor -> Model -> Model
+applyWatchForeground color model =
+    refreshDraw { model | watchForeground = color }
+
+
+applyQuoteBackground : ThemeColor -> Model -> Model
+applyQuoteBackground color model =
+    { model | quoteBackground = color }
+
+
+applyQuoteTextColor : ThemeColor -> Model -> Model
+applyQuoteTextColor color model =
+    { model | quoteText = color }
+
+
+themeColorCode : ThemeColor -> Int
+themeColorCode color =
+    case color of
+        WatchBody ->
+            1
+
+        Cream ->
+            2
+
+        White ->
+            3
+
+        Black ->
+            4
+
+        Brass ->
+            5
+
+        Navy ->
+            6
+
+        Slate ->
+            7
+
+        Burgundy ->
+            8
+
+        Magenta ->
+            9
+
+
+themeColorFromCode : Int -> ThemeColor -> ThemeColor
+themeColorFromCode code fallback =
+    case code of
+        1 ->
+            WatchBody
+
+        2 ->
+            Cream
+
+        3 ->
+            White
+
+        4 ->
+            Black
+
+        5 ->
+            Brass
+
+        6 ->
+            Navy
+
+        7 ->
+            Slate
+
+        8 ->
+            Burgundy
+
+        9 ->
+            Magenta
+
+        _ ->
+            fallback
+
+
+resolveThemeColor : ThemeColor -> PebbleColor.Color -> PebbleColor.Color
+resolveThemeColor color caseColor =
+    case color of
+        WatchBody ->
+            caseColor
+
+        Cream ->
+            PebbleColor.pastelYellow
+
+        White ->
+            PebbleColor.white
+
+        Black ->
+            PebbleColor.black
+
+        Brass ->
+            PebbleColor.brass
+
+        Navy ->
+            PebbleColor.oxfordBlue
+
+        Slate ->
+            PebbleColor.lightGray
+
+        Burgundy ->
+            PebbleColor.darkCandyAppleRed
+
+        Magenta ->
+            PebbleColor.magenta
 
 
 normalizeQuote : String -> String
@@ -360,11 +538,11 @@ refreshAfterTick model =
 refreshQuoteLayout : Model -> Model
 refreshQuoteLayout model =
     let
-        font =
-            quoteFont model.quote
-
         bounds =
             quoteBounds model.screenW model.screenH model.displayShape
+
+        font =
+            pickQuoteFont model.quote bounds
 
         height =
             max 14 (UiResources.fontInfo font).height
@@ -402,7 +580,7 @@ view : Model -> PebbleUi.UiNode
 view model =
     case model.phase of
         ShowWatch ->
-            watchOps model.layout model.hands model.dateLabel model.caseColor
+            watchOps model
                 |> PebbleUi.toUiNode
 
         ShowQuote ->
@@ -410,24 +588,38 @@ view model =
                 |> PebbleUi.toUiNode
 
 
-watchOps : Layout -> Maybe Hands -> String -> PebbleColor.Color -> List PebbleUi.RenderOp
-watchOps layout maybeHands dateLabel caseColor =
-    faceOps layout caseColor
-        ++ List.map hourTickOp layout.hourTicks
-        ++ List.map minuteTickOp layout.minuteTicks
-        ++ dateOps layout.dateBox dateLabel
-        ++ handOps layout.center maybeHands
-        ++ [ PebbleUi.fillCircle layout.center 5 PebbleColor.black
-           , PebbleUi.fillCircle layout.center 2 PebbleColor.pastelYellow
+watchOps : Model -> List PebbleUi.RenderOp
+watchOps model =
+    let
+        dial =
+            resolveThemeColor model.watchBackground model.caseColor
+
+        ink =
+            resolveThemeColor model.watchForeground model.caseColor
+    in
+    faceOps model.layout model.caseColor dial ink
+        ++ List.map (hourTickOp ink) model.layout.hourTicks
+        ++ List.map (minuteTickOp ink) model.layout.minuteTicks
+        ++ dateOps model.layout.dateBox model.dateLabel ink
+        ++ handOps model.layout.center model.hands ink (secondHandColor model)
+        ++ [ PebbleUi.fillCircle model.layout.center 5 ink
+           , PebbleUi.fillCircle model.layout.center 2 dial
            ]
 
 
 quoteOps : Model -> List PebbleUi.RenderOp
 quoteOps model =
-    [ PebbleUi.clear PebbleColor.pastelYellow
+    let
+        background =
+            resolveThemeColor model.quoteBackground model.caseColor
+
+        textColor =
+            resolveThemeColor model.quoteText model.caseColor
+    in
+    [ PebbleUi.clear background
     , PebbleUi.group
         (PebbleUi.context
-            [ PebbleUi.textColor PebbleColor.black ]
+            [ PebbleUi.textColor textColor ]
             (List.map (quoteLineOp model.quoteFont model.quoteBox) model.quoteLines)
         )
     ]
@@ -467,20 +659,52 @@ accQuoteWord maxChars word lines =
                 word :: lines
 
 
-{-| Larger face for shorter quotes. Keep 28px and below so three wrapped
-lines still fit the inset round rect (42px leading clips the last line).
+{-| Largest packed font that still fits the quote box on this screen.
 -}
-quoteFont : String -> UiResources.Font
-quoteFont quote =
-    let
-        n =
-            String.length quote
-    in
-    if n <= 36 then
-        UiResources.Quote28
+quoteFontCandidates : List UiResources.Font
+quoteFontCandidates =
+    [ UiResources.Quote42
+    , UiResources.Quote28
+    , UiResources.Quote24
+    , UiResources.DefaultFont
+    ]
 
-    else
-        UiResources.Quote24
+
+pickQuoteFont : String -> Rect -> UiResources.Font
+pickQuoteFont quote bounds =
+    pickFirstFitting quote bounds quoteFontCandidates
+
+
+pickFirstFitting : String -> Rect -> List UiResources.Font -> UiResources.Font
+pickFirstFitting quote bounds fonts =
+    case fonts of
+        [] ->
+            UiResources.DefaultFont
+
+        font :: rest ->
+            if fontFitsQuote quote bounds font then
+                font
+
+            else
+                pickFirstFitting quote bounds rest
+
+
+fontFitsQuote : String -> Rect -> UiResources.Font -> Bool
+fontFitsQuote quote bounds font =
+    let
+        height =
+            max 14 (UiResources.fontInfo font).height
+
+        charWidth =
+            max 6 (height // 2)
+
+        maxChars =
+            max 4 (bounds.w // charWidth)
+
+        lineCount =
+            List.length (wrapQuoteWords quote maxChars)
+    in
+    lineCount * height <= bounds.h
 
 
 quoteBounds : Int -> Int -> PebblePlatform.DisplayShape -> Rect
@@ -500,42 +724,42 @@ quoteBounds screenW screenH displayShape =
     }
 
 
-faceOps : Layout -> PebbleColor.Color -> List PebbleUi.RenderOp
-faceOps layout caseColor =
-    [ PebbleUi.clear caseColor
-    , PebbleUi.fillCircle layout.center layout.radius PebbleColor.pastelYellow
-    , PebbleUi.circle layout.center layout.radius PebbleColor.black
-    , PebbleUi.circle layout.center layout.bezelInner PebbleColor.black
-    , PebbleUi.circle layout.center layout.railRadius PebbleColor.black
+faceOps : Layout -> PebbleColor.Color -> PebbleColor.Color -> PebbleColor.Color -> List PebbleUi.RenderOp
+faceOps layout letterbox dial ink =
+    [ PebbleUi.clear letterbox
+    , PebbleUi.fillCircle layout.center layout.radius dial
+    , PebbleUi.circle layout.center layout.radius ink
+    , PebbleUi.circle layout.center layout.bezelInner ink
+    , PebbleUi.circle layout.center layout.railRadius ink
     ]
 
 
-hourTickOp : TickMark -> PebbleUi.RenderOp
-hourTickOp tick =
+hourTickOp : PebbleColor.Color -> TickMark -> PebbleUi.RenderOp
+hourTickOp ink tick =
     PebbleUi.group
         (PebbleUi.context
-            [ PebbleUi.strokeColor PebbleColor.black
+            [ PebbleUi.strokeColor ink
             , PebbleUi.strokeWidth tick.width
             ]
-            [ PebbleUi.line tick.from tick.to PebbleColor.black ]
+            [ PebbleUi.line tick.from tick.to ink ]
         )
 
 
-minuteTickOp : Point -> PebbleUi.RenderOp
-minuteTickOp point =
-    PebbleUi.pixel point PebbleColor.black
+minuteTickOp : PebbleColor.Color -> Point -> PebbleUi.RenderOp
+minuteTickOp ink point =
+    PebbleUi.pixel point ink
 
 
-dateOps : Rect -> String -> List PebbleUi.RenderOp
-dateOps box dateLabel =
+dateOps : Rect -> String -> PebbleColor.Color -> List PebbleUi.RenderOp
+dateOps box dateLabel ink =
     if dateLabel == "" then
         []
 
     else
-        [ PebbleUi.rect box PebbleColor.black
+        [ PebbleUi.rect box ink
         , PebbleUi.group
             (PebbleUi.context
-                [ PebbleUi.textColor PebbleColor.black ]
+                [ PebbleUi.textColor ink ]
                 [ PebbleUi.text UiResources.DefaultFont
                     (PebbleUi.alignCenter PebbleUi.defaultTextOptions)
                     box
@@ -545,22 +769,31 @@ dateOps box dateLabel =
         ]
 
 
-handOps : Point -> Maybe Hands -> List PebbleUi.RenderOp
-handOps center maybeHands =
+secondHandColor : Model -> PebbleColor.Color
+secondHandColor model =
+    if PebblePlatform.colorCapabilityIsColor model.colorMode then
+        PebbleColor.folly
+
+    else
+        resolveThemeColor model.watchForeground model.caseColor
+
+
+handOps : Point -> Maybe Hands -> PebbleColor.Color -> PebbleColor.Color -> List PebbleUi.RenderOp
+handOps center maybeHands ink secondColor =
     case maybeHands of
         Nothing ->
             []
 
         Just hands ->
-            [ strokeLine center hands.hourTo 4 PebbleColor.black
-            , strokeLine center hands.minuteTo 2 PebbleColor.black
+            [ strokeLine center hands.hourTo 4 ink
+            , strokeLine center hands.minuteTo 2 ink
             , PebbleUi.group
                 (PebbleUi.context
-                    [ PebbleUi.strokeColor PebbleColor.folly
+                    [ PebbleUi.strokeColor secondColor
                     , PebbleUi.strokeWidth 1
                     ]
-                    [ PebbleUi.line center hands.secondTo PebbleColor.folly
-                    , PebbleUi.line center hands.secondTail PebbleColor.folly
+                    [ PebbleUi.line center hands.secondTo secondColor
+                    , PebbleUi.line center hands.secondTail secondColor
                     ]
                 )
             ]

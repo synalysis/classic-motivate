@@ -70,6 +70,10 @@ sendSettings settings =
         [ CompanionPhone.sendPhoneToWatch (SetMotivationalText settings.motivationalText)
         , CompanionPhone.sendPhoneToWatch (SetWatchDisplaySeconds (clampSeconds settings.watchSeconds))
         , CompanionPhone.sendPhoneToWatch (SetQuoteDisplaySeconds (clampSeconds settings.quoteSeconds))
+        , CompanionPhone.sendPhoneToWatch (SetWatchBackground settings.watchBackground)
+        , CompanionPhone.sendPhoneToWatch (SetWatchForeground settings.watchForeground)
+        , CompanionPhone.sendPhoneToWatch (SetQuoteBackground settings.quoteBackground)
+        , CompanionPhone.sendPhoneToWatch (SetQuoteTextColor settings.quoteText)
         ]
 
 

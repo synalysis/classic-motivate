@@ -1,5 +1,6 @@
 module CompanionPreferences exposing (Settings, defaults, settings)
 
+import Companion.Types exposing (ThemeColor(..))
 import Pebble.Companion.Preferences as Preferences
 
 
@@ -7,6 +8,10 @@ type alias Settings =
     { motivationalText : String
     , watchSeconds : Float
     , quoteSeconds : Float
+    , watchBackground : ThemeColor
+    , watchForeground : ThemeColor
+    , quoteBackground : ThemeColor
+    , quoteText : ThemeColor
     }
 
 
@@ -15,6 +20,10 @@ defaults =
     { motivationalText = "Make today count."
     , watchSeconds = 5
     , quoteSeconds = 3
+    , watchBackground = Cream
+    , watchForeground = Black
+    , quoteBackground = Cream
+    , quoteText = Black
     }
 
 
@@ -51,3 +60,55 @@ settings =
                             |> Preferences.sendToWatch "SetQuoteDisplaySeconds"
                         )
             )
+        |> Preferences.section "Watch face"
+            (\schema ->
+                schema
+                    |> Preferences.field "watchBackground"
+                        (Preferences.choice "Background" backgroundChoices
+                            |> Preferences.sendToWatch "SetWatchBackground"
+                        )
+                    |> Preferences.field "watchForeground"
+                        (Preferences.choice "Foreground" foregroundChoices
+                            |> Preferences.sendToWatch "SetWatchForeground"
+                        )
+            )
+        |> Preferences.section "Quote page"
+            (\schema ->
+                schema
+                    |> Preferences.field "quoteBackground"
+                        (Preferences.choice "Background" backgroundChoices
+                            |> Preferences.sendToWatch "SetQuoteBackground"
+                        )
+                    |> Preferences.field "quoteText"
+                        (Preferences.choice "Text" foregroundChoices
+                            |> Preferences.sendToWatch "SetQuoteTextColor"
+                        )
+            )
+
+
+backgroundChoices : List (Preferences.ChoiceOption ThemeColor)
+backgroundChoices =
+    [ Preferences.choiceOption Cream "cream" "Cream"
+    , Preferences.choiceOption WatchBody "watch-body" "Watch body"
+    , Preferences.choiceOption White "white" "White"
+    , Preferences.choiceOption Black "black" "Black"
+    , Preferences.choiceOption Brass "brass" "Brass"
+    , Preferences.choiceOption Navy "navy" "Navy"
+    , Preferences.choiceOption Slate "slate" "Slate"
+    , Preferences.choiceOption Burgundy "burgundy" "Burgundy"
+    , Preferences.choiceOption Magenta "magenta" "Magenta"
+    ]
+
+
+foregroundChoices : List (Preferences.ChoiceOption ThemeColor)
+foregroundChoices =
+    [ Preferences.choiceOption Black "black" "Black"
+    , Preferences.choiceOption WatchBody "watch-body" "Watch body"
+    , Preferences.choiceOption White "white" "White"
+    , Preferences.choiceOption Cream "cream" "Cream"
+    , Preferences.choiceOption Brass "brass" "Brass"
+    , Preferences.choiceOption Navy "navy" "Navy"
+    , Preferences.choiceOption Slate "slate" "Slate"
+    , Preferences.choiceOption Burgundy "burgundy" "Burgundy"
+    , Preferences.choiceOption Magenta "magenta" "Magenta"
+    ]

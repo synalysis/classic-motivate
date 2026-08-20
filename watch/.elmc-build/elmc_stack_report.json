@@ -295,6 +295,12 @@
       "score": 2
     },
     {
+      "function": "Main.applyQuoteBackground",
+      "level": "ok",
+      "reasons": [],
+      "score": 0
+    },
+    {
       "function": "Main.applyQuoteSeconds",
       "level": "ok",
       "reasons": [],
@@ -302,6 +308,24 @@
     },
     {
       "function": "Main.applyQuoteText",
+      "level": "ok",
+      "reasons": [],
+      "score": 0
+    },
+    {
+      "function": "Main.applyQuoteTextColor",
+      "level": "ok",
+      "reasons": [],
+      "score": 0
+    },
+    {
+      "function": "Main.applyWatchBackground",
+      "level": "ok",
+      "reasons": [],
+      "score": 0
+    },
+    {
+      "function": "Main.applyWatchForeground",
       "level": "ok",
       "reasons": [],
       "score": 0
@@ -336,7 +360,7 @@
       "function": "Main.dateOps",
       "level": "ok",
       "reasons": [],
-      "score": 3
+      "score": 2
     },
     {
       "function": "Main.defaultQuote",
@@ -363,10 +387,16 @@
       "score": 0
     },
     {
-      "function": "Main.handOps",
-      "level": "warn",
+      "function": "Main.fontFitsQuote",
+      "level": "ok",
       "reasons": [],
-      "score": 7
+      "score": 0
+    },
+    {
+      "function": "Main.handOps",
+      "level": "ok",
+      "reasons": [],
+      "score": 4
     },
     {
       "function": "Main.handPoint",
@@ -444,13 +474,25 @@
       "score": 0
     },
     {
+      "function": "Main.pickFirstFitting",
+      "level": "ok",
+      "reasons": [],
+      "score": 0
+    },
+    {
+      "function": "Main.pickQuoteFont",
+      "level": "ok",
+      "reasons": [],
+      "score": 0
+    },
+    {
       "function": "Main.quoteBounds",
       "level": "ok",
       "reasons": [],
       "score": 0
     },
     {
-      "function": "Main.quoteFont",
+      "function": "Main.quoteFontCandidates",
       "level": "ok",
       "reasons": [],
       "score": 0
@@ -463,11 +505,11 @@
     },
     {
       "function": "Main.quoteOps",
-      "level": "ok",
+      "level": "warn",
       "reasons": [
         "list_hof"
       ],
-      "score": 4
+      "score": 6
     },
     {
       "function": "Main.refreshAfterTick",
@@ -496,6 +538,18 @@
       "score": 0
     },
     {
+      "function": "Main.resolveThemeColor",
+      "level": "ok",
+      "reasons": [],
+      "score": 0
+    },
+    {
+      "function": "Main.secondHandColor",
+      "level": "ok",
+      "reasons": [],
+      "score": 0
+    },
+    {
       "function": "Main.setMinute",
       "level": "ok",
       "reasons": [
@@ -512,6 +566,12 @@
       "score": 3
     },
     {
+      "function": "Main.storeQuoteBackground",
+      "level": "ok",
+      "reasons": [],
+      "score": 0
+    },
+    {
       "function": "Main.storeQuoteSeconds",
       "level": "ok",
       "reasons": [],
@@ -519,6 +579,24 @@
     },
     {
       "function": "Main.storeQuoteText",
+      "level": "ok",
+      "reasons": [],
+      "score": 0
+    },
+    {
+      "function": "Main.storeQuoteTextColor",
+      "level": "ok",
+      "reasons": [],
+      "score": 0
+    },
+    {
+      "function": "Main.storeWatchBackground",
+      "level": "ok",
+      "reasons": [],
+      "score": 0
+    },
+    {
+      "function": "Main.storeWatchForeground",
       "level": "ok",
       "reasons": [],
       "score": 0
@@ -542,6 +620,18 @@
       "score": 0
     },
     {
+      "function": "Main.themeColorCode",
+      "level": "ok",
+      "reasons": [],
+      "score": 0
+    },
+    {
+      "function": "Main.themeColorFromCode",
+      "level": "ok",
+      "reasons": [],
+      "score": 0
+    },
+    {
       "function": "Main.tickPhase",
       "level": "ok",
       "reasons": [],
@@ -557,7 +647,7 @@
       "function": "Main.update",
       "level": "ok",
       "reasons": [],
-      "score": 0
+      "score": 1
     },
     {
       "function": "Main.updateField",
@@ -583,7 +673,7 @@
       "reasons": [
         "list_hof"
       ],
-      "score": 12
+      "score": 15
     },
     {
       "function": "Main.wrapQuoteWords",
@@ -892,7 +982,19 @@
       "score": 0
     },
     {
+      "function": "Pebble.Ui.Color.magenta",
+      "level": "ok",
+      "reasons": [],
+      "score": 0
+    },
+    {
       "function": "Pebble.Ui.Color.orange",
+      "level": "ok",
+      "reasons": [],
+      "score": 0
+    },
+    {
+      "function": "Pebble.Ui.Color.oxfordBlue",
       "level": "ok",
       "reasons": [],
       "score": 0
@@ -1096,12 +1198,6 @@
       "score": 0
     },
     {
-      "function": "String.length",
-      "level": "ok",
-      "reasons": [],
-      "score": 0
-    },
-    {
       "function": "String.trim",
       "level": "ok",
       "reasons": [],
@@ -1158,6 +1254,14 @@
       "c_tmp_max": 0
     },
     {
+      "function": "elmc_fn_Main_storeQuoteBackground",
+      "level": "ok",
+      "reasons": [],
+      "score": 0,
+      "c_boxed_locals": 0,
+      "c_tmp_max": 0
+    },
+    {
       "function": "elmc_fn_Main_storeQuoteSeconds",
       "level": "ok",
       "reasons": [],
@@ -1174,34 +1278,66 @@
       "c_tmp_max": 0
     },
     {
+      "function": "elmc_fn_Main_storeQuoteTextColor",
+      "level": "ok",
+      "reasons": [],
+      "score": 0,
+      "c_boxed_locals": 0,
+      "c_tmp_max": 0
+    },
+    {
+      "function": "elmc_fn_Main_storeWatchBackground",
+      "level": "ok",
+      "reasons": [],
+      "score": 0,
+      "c_boxed_locals": 0,
+      "c_tmp_max": 0
+    },
+    {
+      "function": "elmc_fn_Main_storeWatchForeground",
+      "level": "ok",
+      "reasons": [],
+      "score": 0,
+      "c_boxed_locals": 0,
+      "c_tmp_max": 0
+    },
+    {
       "function": "elmc_fn_Main_storeWatchSeconds",
       "level": "ok",
       "reasons": [],
       "score": 0,
       "c_boxed_locals": 0,
       "c_tmp_max": 0
+    },
+    {
+      "function": "elmc_fn_Main_themeColorFromCode",
+      "level": "ok",
+      "reasons": [],
+      "score": 0,
+      "c_boxed_locals": 1,
+      "c_tmp_max": 0
     }
   ],
   "summary": {
-    "ok": 175,
+    "ok": 196,
     "warn": 8,
     "risk": 6
   },
   "code_size_indicators": {
     "boxed_tmp_declarations": 0,
     "closure_allocations": 0,
-    "commands_append_bytes": 9667,
-    "direct_command_defs": 18,
-    "fusion_native_count": 4,
-    "generated_c_bytes": 128721,
-    "generated_c_lines": 3120,
-    "generic_function_defs": 13,
+    "commands_append_bytes": 22369,
+    "direct_command_defs": 20,
+    "fusion_native_count": 10,
+    "generated_c_bytes": 143308,
+    "generated_c_lines": 3465,
+    "generic_function_defs": 21,
     "linked_binary": {
       "reason": "binary size is available after platform or host linking, not during C source generation",
       "available": false
     },
-    "owned_slot_max": 35,
-    "plan_function_count": 42,
+    "owned_slot_max": 53,
+    "plan_function_count": 48,
     "runtime_calls": {
       "elmc_list_all": 0,
       "elmc_list_any": 0,

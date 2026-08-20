@@ -1079,10 +1079,10 @@ void *elmc_calloc_impl(size_t nmemb, size_t size, const char *context, const cha
 
 
 #ifndef ELMC_OWNED_SLOTS_POOL_DEPTH
-#define ELMC_OWNED_SLOTS_POOL_DEPTH 4
+#define ELMC_OWNED_SLOTS_POOL_DEPTH 3
 #endif
 #ifndef ELMC_OWNED_SLOTS_POOL_CAP
-#define ELMC_OWNED_SLOTS_POOL_CAP 128
+#define ELMC_OWNED_SLOTS_POOL_CAP 53
 #endif
 
 typedef struct {
