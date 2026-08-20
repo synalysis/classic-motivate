@@ -1,0 +1,1214 @@
+{
+  "functions": [
+    {
+      "function": "Basics.gt",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Basics.lt",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Basics.max",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Basics.min",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Basics.modBy",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Basics.not",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Bitwise.or",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Bitwise.shiftLeftBy",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Companion.Internal.watchToPhoneTag",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Companion.Internal.watchToPhoneValue",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Companion.Watch.onPhoneToWatch",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Companion.Watch.sendWatchToPhone",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Elm.Kernel.PebbleWatch.batch",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Elm.Kernel.PebbleWatch.companionSend",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Elm.Kernel.PebbleWatch.getColor",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Elm.Kernel.PebbleWatch.getCurrentDateTime",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Elm.Kernel.PebbleWatch.onHourChange",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Elm.Kernel.PebbleWatch.onMinuteChange",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Elm.Kernel.PebbleWatch.onSecondChange",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Elm.Kernel.PebbleWatch.storageReadInt",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Elm.Kernel.PebbleWatch.storageReadString",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Elm.Kernel.PebbleWatch.storageWriteInt",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Elm.Kernel.PebbleWatch.storageWriteString",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Json.Decode.bool",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Json.Decode.decodeValue",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Json.Decode.field",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Json.Decode.int",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Json.Decode.map",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Json.Decode.map2",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Json.Decode.map4",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Json.Decode.map7",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Json.Decode.null",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Json.Decode.oneOf",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Json.Decode.string",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Json.Decode.succeed",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "List.cons",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "List.filter",
+      "level": "warn",
+      "score": 6,
+      "reasons": [
+        "lambda"
+      ]
+    },
+    {
+      "function": "List.foldl",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "List.foldr",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "List.foldrHelper",
+      "level": "risk",
+      "score": 21,
+      "reasons": []
+    },
+    {
+      "function": "List.indexedMap",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "List.length",
+      "level": "warn",
+      "score": 6,
+      "reasons": [
+        "lambda"
+      ]
+    },
+    {
+      "function": "List.map",
+      "level": "warn",
+      "score": 6,
+      "reasons": [
+        "lambda"
+      ]
+    },
+    {
+      "function": "List.map2",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "List.range",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "List.rangeHelp",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "List.reverse",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Main.accQuoteWord",
+      "level": "ok",
+      "score": 2,
+      "reasons": []
+    },
+    {
+      "function": "Main.applyQuoteSeconds",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Main.applyQuoteText",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Main.applyWatchSeconds",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Main.buildHands",
+      "level": "warn",
+      "score": 9,
+      "reasons": []
+    },
+    {
+      "function": "Main.buildLayout",
+      "level": "risk",
+      "score": 23,
+      "reasons": [
+        "list_hof"
+      ]
+    },
+    {
+      "function": "Main.clampSeconds",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Main.dateOps",
+      "level": "ok",
+      "score": 3,
+      "reasons": []
+    },
+    {
+      "function": "Main.defaultQuote",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Main.defaultQuoteSeconds",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Main.defaultWatchSeconds",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Main.faceOps",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Main.handOps",
+      "level": "warn",
+      "score": 7,
+      "reasons": []
+    },
+    {
+      "function": "Main.handPoint",
+      "level": "ok",
+      "score": 4,
+      "reasons": []
+    },
+    {
+      "function": "Main.hourTick",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Main.hourTickIndexes",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Main.hourTickOp",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Main.init",
+      "level": "ok",
+      "score": 1,
+      "reasons": []
+    },
+    {
+      "function": "Main.isCardinal",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Main.main",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Main.minuteTick",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Main.minuteTickIndexes",
+      "level": "warn",
+      "score": 7,
+      "reasons": [
+        "lambda",
+        "list_hof"
+      ]
+    },
+    {
+      "function": "Main.minuteTickOp",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Main.normalizeQuote",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Main.phaseSeconds",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Main.quoteBounds",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Main.quoteFont",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Main.quoteLineOp",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Main.quoteOps",
+      "level": "ok",
+      "score": 4,
+      "reasons": [
+        "list_hof"
+      ]
+    },
+    {
+      "function": "Main.refreshAfterTick",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Main.refreshDraw",
+      "level": "ok",
+      "score": 1,
+      "reasons": []
+    },
+    {
+      "function": "Main.refreshQuoteLayout",
+      "level": "risk",
+      "score": 11,
+      "reasons": [
+        "lambda"
+      ]
+    },
+    {
+      "function": "Main.refreshRemaining",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Main.setMinute",
+      "level": "ok",
+      "score": 3,
+      "reasons": [
+        "lambda"
+      ]
+    },
+    {
+      "function": "Main.setSecond",
+      "level": "ok",
+      "score": 3,
+      "reasons": [
+        "lambda"
+      ]
+    },
+    {
+      "function": "Main.storeQuoteSeconds",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Main.storeQuoteText",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Main.storeWatchSeconds",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Main.strokeLine",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Main.subscriptions",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Main.tickPhase",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Main.unit60",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Main.update",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Main.updateField",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Main.updateFromPhone",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Main.view",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Main.watchOps",
+      "level": "risk",
+      "score": 12,
+      "reasons": [
+        "list_hof"
+      ]
+    },
+    {
+      "function": "Main.wrapQuoteWords",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Events.batch",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Events.onHourChange",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Events.onMinuteChange",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Events.onSecondChange",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Internal.Companion.companionSend",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Platform.application",
+      "level": "ok",
+      "score": 3,
+      "reasons": [
+        "lambda"
+      ]
+    },
+    {
+      "function": "Pebble.Platform.colorCapabilityDecoder",
+      "level": "ok",
+      "score": 3,
+      "reasons": [
+        "lambda"
+      ]
+    },
+    {
+      "function": "Pebble.Platform.colorCapabilityFromString",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Platform.colorCapabilityIsColor",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Platform.contextObjectDecoder",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Platform.coreContextDecoder",
+      "level": "risk",
+      "score": 21,
+      "reasons": [
+        "lambda"
+      ]
+    },
+    {
+      "function": "Pebble.Platform.decodeFieldWithDefault",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Platform.decodeLaunchContext",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Platform.defaultContext",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Platform.defaultScreen",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Platform.displayShapeDecoder",
+      "level": "ok",
+      "score": 3,
+      "reasons": [
+        "lambda"
+      ]
+    },
+    {
+      "function": "Pebble.Platform.displayShapeFromString",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Platform.displayShapeIsRound",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Platform.launchButtonDecoder",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Platform.launchButtonFromString",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Platform.launchButtonFromTag",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Platform.launchContextDecoder",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Platform.launchMetadataDecoder",
+      "level": "warn",
+      "score": 6,
+      "reasons": [
+        "lambda"
+      ]
+    },
+    {
+      "function": "Pebble.Platform.launchReasonDecoder",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Platform.launchReasonFromString",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Platform.mergeLaunchMetadata",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Platform.quickLaunchActionDecoder",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Platform.quickLaunchActionFromString",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Platform.quickLaunchActionFromTag",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Platform.screenDecoder",
+      "level": "risk",
+      "score": 18,
+      "reasons": [
+        "lambda"
+      ]
+    },
+    {
+      "function": "Pebble.Platform.watchface",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Storage.readInt",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Storage.readString",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Storage.writeInt",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Storage.writeString",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Time.currentDateTime",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.Color.black",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.Color.blue",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.Color.brass",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.Color.brilliantRose",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.Color.cadetBlue",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.Color.channelTo2Bit",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.Color.clampInt",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.Color.darkCandyAppleRed",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.Color.folly",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.Color.green",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.Color.indexed",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.Color.lightGray",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.Color.orange",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.Color.pastelYellow",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.Color.rajah",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.Color.red",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.Color.springBud",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.Color.sunsetOrange",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.Color.tiffanyBlue",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.Color.toInt",
+      "level": "warn",
+      "score": 7,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.Color.white",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.Resources.fontInfo",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.alignCenter",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.canvasLayer",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.circle",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.clear",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.context",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.defaultTextOptions",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.fillCircle",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.group",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.line",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.pixel",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.rect",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.strokeColor",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.strokeWidth",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.text",
+      "level": "ok",
+      "score": 2,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.textAlignmentToInt",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.textColor",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.textOverflowToInt",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.toUiNode",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.window",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.Ui.windowStack",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.WatchInfo.caseColor",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Pebble.WatchInfo.getColor",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Platform.worker",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "String.fromInt",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "String.length",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "String.trim",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "String.words",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Tuple.first",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "Tuple.second",
+      "level": "ok",
+      "score": 0,
+      "reasons": []
+    },
+    {
+      "function": "elmc_fn_Main_clampSeconds",
+      "level": "ok",
+      "score": 0,
+      "reasons": [],
+      "c_boxed_locals": 0,
+      "c_tmp_max": 0
+    },
+    {
+      "function": "elmc_fn_Main_defaultQuoteSeconds",
+      "level": "ok",
+      "score": 0,
+      "reasons": [],
+      "c_boxed_locals": 0,
+      "c_tmp_max": 0
+    },
+    {
+      "function": "elmc_fn_Main_defaultWatchSeconds",
+      "level": "ok",
+      "score": 0,
+      "reasons": [],
+      "c_boxed_locals": 0,
+      "c_tmp_max": 0
+    },
+    {
+      "function": "elmc_fn_Main_refreshRemaining",
+      "level": "ok",
+      "score": 0,
+      "reasons": [],
+      "c_boxed_locals": 2,
+      "c_tmp_max": 0
+    },
+    {
+      "function": "elmc_fn_Main_storeQuoteSeconds",
+      "level": "ok",
+      "score": 0,
+      "reasons": [],
+      "c_boxed_locals": 0,
+      "c_tmp_max": 0
+    },
+    {
+      "function": "elmc_fn_Main_storeQuoteText",
+      "level": "ok",
+      "score": 0,
+      "reasons": [],
+      "c_boxed_locals": 0,
+      "c_tmp_max": 0
+    },
+    {
+      "function": "elmc_fn_Main_storeWatchSeconds",
+      "level": "ok",
+      "score": 0,
+      "reasons": [],
+      "c_boxed_locals": 0,
+      "c_tmp_max": 0
+    }
+  ],
+  "summary": {
+    "ok": 175,
+    "warn": 8,
+    "risk": 6
+  },
+  "code_size_indicators": {
+    "boxed_tmp_declarations": 0,
+    "closure_allocations": 0,
+    "commands_append_bytes": 9667,
+    "direct_command_defs": 18,
+    "fusion_native_count": 4,
+    "generated_c_bytes": 128617,
+    "generated_c_lines": 3120,
+    "generic_function_defs": 13,
+    "linked_binary": {
+      "reason": "binary size is available after platform or host linking, not during C source generation",
+      "available": false
+    },
+    "owned_slot_max": 35,
+    "plan_function_count": 42,
+    "runtime_calls": {
+      "elmc_list_all": 0,
+      "elmc_list_any": 0,
+      "elmc_list_drop": 0,
+      "elmc_list_filter": 0,
+      "elmc_list_filter_map": 0,
+      "elmc_list_map": 0
+    }
+  }
+}
